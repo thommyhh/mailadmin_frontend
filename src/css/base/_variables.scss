@@ -24,12 +24,11 @@ $color-charcoal: #222;
 // Font sizes are applied to the root element (HTML)
 // They define all other sizes through rem/em
 
-$font-size-xs:     100%;   // 16px
-$font-size-sm:     100%;   // 16px
-$font-size-md:     112.5%; // 18px
-$font-size-lg:     125%;   // 20px
+$font-size-xs: 100%;   // 16px
+$font-size-sm: 100%;   // 16px
+$font-size-md: 112.5%; // 18px
 
-$font-stack:       Roboto, Arial, sans-serif;
+$font-stack:   Roboto, Arial, sans-serif;
 
 
 
@@ -61,6 +60,9 @@ $font-large:  1.25rem;
 $break-sm: 30em; // 480px
 $break-md: 60em; // 960px
 $break-lg: 75em; // 1200px
+
+
+// Create min/max breakpoint variables
 
 $break-xs-max: calc($break-sm - 1px); // 480px - 1px = 479px
 $break-sm-min: $break-sm;             // 480px
