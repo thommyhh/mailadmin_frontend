@@ -11,6 +11,23 @@
 // =============================================================================
 
 
+/*
+
+Prefixes for CSS classes
+----------------------------------------
+ l- : Layout
+ c- : Component
+ u- : Utility
+js- : JavaScript Hook
+
+
+Naming convention for CSS classes
+----------------------------------------
+.prefix-block__element--modifier
+
+*/
+
+
 // VARIABLES
 @import 'base/variables';
 

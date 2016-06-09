@@ -6,6 +6,9 @@
 // COLORS
 // =====================================
 
+// Choose awesome cool color names
+// that hint at the actual color
+
 $color-orange:   #fc3c00;
 $color-white:    #fff;
 $color-mist:     #ddd;
@@ -18,23 +21,31 @@ $color-charcoal: #222;
 // TYPOGRAPHY
 // =====================================
 
+// Font sizes are applied to the root element (HTML)
+// They define all other sizes through rem/em
+
 $font-size-xs:     100%;   // 16px
 $font-size-sm:     100%;   // 16px
 $font-size-md:     112.5%; // 18px
 $font-size-lg:     125%;   // 20px
 
-$font-size-small:  1rem;
-$font-size-medium: 1.125rem;
-$font-size-large:  1.25rem;
-
 $font-stack:       Roboto, Arial, sans-serif;
 
 
 
-// HEIGHT
+// SIZING
 // =====================================
 
+// Height
+
 $height-row: 4rem; // 64px @ xs / 64px @ sm / 72px @ md / 80px @ lg
+
+
+// Font-sizes for components
+
+$font-small:  1rem;
+$font-medium: 1.125rem;
+$font-large:  1.25rem;
 
 
 
