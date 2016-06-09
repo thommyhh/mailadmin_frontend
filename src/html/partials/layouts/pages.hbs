@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{file.meta.title}}</title>
+
+    <!-- CSS -->
+  {{#if displayNav}}
+    <link rel="stylesheet" href="{{rel}}css/sg.css">
+  {{/if}}
+    <link rel="stylesheet" href="{{rel}}css/styles.css">
+  </head>
+  <body>
+
+  {{#if displayNav}}
+    <!-- Styleguide Nav -->
+    {{> "styleguide/nav"}}
+  {{/if}}
+
+    {{{block "content"}}}
+
+    <!-- JS -->
+    <script src="{{rel}}js/scripts.js"></script>
+  </body>
+</html>

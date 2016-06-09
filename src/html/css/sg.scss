@@ -1,0 +1,309 @@
+// STYLEGUIDE SASS FILE
+//
+// Some styles for development
+// =============================================================================
+
+
+
+
+// Variables
+// =====================================
+
+
+// Breakpoints
+$screen-sm: 800px;
+$screen-lg: 1400px;
+
+$padding:    30px;
+$padding-xs: ($padding / 3);
+$padding-sm: ($padding / 2);
+$padding-lg: ($padding * 2);
+$padding-xl: ($padding * 3);
+
+// Colors
+$color-primary:   rgb(0, 100, 200);
+$color-secondary: rgb(100, 100, 100);
+$color-text:      rgb(255, 255, 255);
+$color-border:    rgb(220, 220, 220);
+
+
+
+
+// Docs Nav
+// =====================================
+
+
+.sg-nav {
+  height: 40px;
+  transition: height 0.2s linear;
+
+  &::after {
+    content: '';
+    display: table;
+    line-height: 0;
+    clear: both;
+  }
+}
+
+.sg-nav--hidden {
+  height: 0;
+}
+
+  .sg-nav__list {
+    position: fixed;
+    z-index: 9999;
+    display: flex;
+    height: 40px;
+    top: 0;
+    left: 0;
+    right: 40px;
+    margin: 0;
+    padding: 0;
+    background-color: $color-secondary;
+    transition: transform 0.2s linear;
+
+    .sg-nav--hidden & {
+      transform: translate3d(0, -40px, 0);
+    }
+
+    @media (min-width: $screen-sm) {
+      padding: 0 15px;
+    }
+  }
+
+    .sg-nav__item {
+      display: block;
+      height: inherit;
+    }
+
+      .sg-nav__button {
+        display: block;
+        height: 40px;
+        padding: 11px 20px;
+        font-size: 16px;
+        font-weight: 100;
+        text-transform: uppercase;
+        color: $color-text;
+        background: none;
+        border: none;
+        outline: none;
+
+        .sg-nav__item:hover &,
+        &.sg-nav__button--active,
+        &:focus {
+          background: lighten($color-primary, 20%);
+        }
+      }
+
+        .sg-nav__icon {
+          height: 100%;
+          fill: currentColor;
+        }
+
+        .sg-nav__text {
+          display: none;
+
+          @media (min-width: $screen-sm) {
+            display: inline;
+            margin-left: 8px;
+            vertical-align: 3px;
+          }
+        }
+
+      .sg-nav__sub-list {
+        display: none;
+        position: absolute;
+        width: inherit;
+        top: 40px;
+        margin: 0;
+        padding: 0;
+        background-color: $color-border;
+      }
+
+      .sg-nav__sub-list--visible {
+        display: block;
+      }
+
+        .sg-nav__sub-item {
+          display: block;
+        }
+
+          .sg-nav__link {
+            display: block;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 400;
+            color: $color-secondary;
+            text-decoration: none;
+            outline: none;
+
+            &:hover,
+            &:focus {
+              color: $color-text;
+              background: lighten($color-primary, 20%);
+            }
+          }
+
+  .sg-nav__hide-btn {
+    position: fixed;
+    z-index: 9999;
+    height: 40px;
+    width: 40px;
+    top: 0;
+    right: 0;
+    padding: 5px;
+    font-size: 24px;
+    color: $color-text;
+    background: lighten($color-primary, 20%);
+    border: none;
+    outline: none;
+
+    &:hover,
+    &:focus {
+      background: lighten($color-primary, 10%);
+    }
+  }
+
+    .sg-nav__hide-btn-icon {
+      fill: currentColor;
+      height: 28px;
+    }
+
+    .sg-nav__hide-btn-icon--show {
+      display: none;
+
+      .sg-nav__hide-btn--active & {
+        display: inline;
+      }
+    }
+
+    .sg-nav__hide-btn-icon--close {
+      .sg-nav__hide-btn--active & {
+        display: none;
+      }
+    }
+
+
+
+
+
+// Docs Header
+// =====================================
+
+
+.sg-header {
+  max-width: $screen-lg;
+  margin: $padding-sm auto $padding-lg;
+  padding: $padding-sm;
+  border-bottom: 1px solid $color-border;
+
+  @media (min-width: $screen-sm) {
+    margin: $padding auto $padding-xl;
+    padding: $padding;
+  }
+}
+
+  .sg-header__title {
+    margin: 0 0 10px;
+    font-size: 26px;
+    font-weight: 100;
+    color: $color-primary;
+
+    @media (min-width: $screen-sm) {
+      margin: 0 0 15px;
+      font-size: 48px;
+    }
+  }
+
+  .sg-header__description {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 100;
+    color: $color-secondary;
+
+    @media (min-width: $screen-sm) {
+      font-size: 18px;
+    }
+  }
+
+
+
+
+// Docs Body
+// =====================================
+
+
+.sg-body {
+  max-width: $screen-lg;
+  margin: 0 auto;
+}
+
+
+
+
+// Docs Article
+// =====================================
+
+
+.sg-article {
+  margin-bottom: $padding-lg;
+
+  @media (min-width: $screen-sm) {
+    margin-bottom: $padding-xl;
+  }
+}
+
+  .sg-article__header {
+    padding: $padding-sm;
+
+    @media (min-width: $screen-sm) {
+      padding: $padding;
+    }
+  }
+
+    .sg-article__title {
+      margin: 0 0 10px;
+      font-size: 20px;
+      font-weight: 100;
+      color: $color-primary;
+
+      @media (min-width: $screen-sm) {
+        font-size: 24px;
+      }
+    }
+
+    .sg-article__description {
+      margin: 0 0 10px;
+      font-size: 14px;
+      font-weight: 100;
+      color: $color-secondary;
+
+      @media (min-width: $screen-sm) {
+        font-size: 16px;
+      }
+    }
+
+  .sg-article__body {
+    padding: $padding-sm;
+    border-top:    1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+
+    &::after {
+      content: ' ';
+      display: table;
+      clear: both;
+      line-height: 0;
+    }
+
+    @media (min-width: $screen-sm) {
+      padding: $padding;
+    }
+
+    @media (min-width: $screen-lg) {
+      border: 1px solid $color-border;
+    }
+  }
+
+  .sg-article__body--dark {
+    background-color: $color-secondary;
+  }
