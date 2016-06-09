@@ -1,3 +1,85 @@
 /* BUTTONS
  * All your button styles go in this file.
 ============================================================================= */
+
+
+
+// DEFAULT BUTTON
+// =====================================
+
+.c-button {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  height: 2.5em;
+  padding: 0 1em;
+  vertical-align: middle;
+
+  background-color: $color-shadow;
+
+  border: none;
+  border-radius: 0.2em;
+  outline: none;
+
+  font-size: 1em;
+  font-weight: 100;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $color-white;
+
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: darken($color-shadow, 15%);
+  }
+
+  &:active {
+    background-color: darken($color-shadow, 25%);
+  }
+
+  @media (min-width: $break-md-min) {
+    height: 2em;
+    padding: 0 0.6em;
+
+    font-size: 0.9em;
+  }
+}
+
+
+
+// DEFAULT BUTTON with HIGHLIGHT
+// =====================================
+
+.c-button--highlight {
+  background-color: $color-orange;
+
+  &:hover,
+  &:focus {
+    background-color: darken($color-orange, 15%);
+  }
+
+  &:active {
+    background-color: darken($color-orange, 25%);
+  }
+}
+
+
+
+// ICON for BUTTONS
+// =====================================
+
+.c-button__icon {
+  height: 1.2em;
+  width: 1.2em;
+  margin-right: 0.4em;
+
+  fill: currentColor;
+
+  // Firefox workaround:
+  // Using flexbox on buttons is not working in Firefox
+  _::-moz-progress-bar, body:last-child & {
+    float: left;
+  }
+}
