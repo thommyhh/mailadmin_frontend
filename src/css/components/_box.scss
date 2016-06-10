@@ -7,13 +7,17 @@
 .c-box {
   display: flex;
   flex-direction: column;
+
+  // Set component size
+  font-size: 1rem;
 }
 
   .c-box__title {
     margin: 0;
-    padding: 1rem;
+    padding: 0.8em 1rem;
 
-    font-weight: 400;
+    font-size: 1.3em;
+    font-weight: 100;
     color: $color-white;
 
     background-color: $color-shadow;
@@ -21,8 +25,9 @@
 
   .c-box__content {
     margin: 0;
-    padding: 1rem;
+    padding: 1em 1rem;
 
+    font-size: 1em;
     color: $color-charcoal;
 
     background-color: $color-mist;
