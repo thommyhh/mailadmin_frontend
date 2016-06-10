@@ -71,15 +71,32 @@
 // =====================================
 
 .c-button__icon {
-  height: 1.2em;
-  width: 1.2em;
-  margin-right: 0.4em;
+  height: 1.4em;
+  width: 1.4em;
 
   fill: currentColor;
+
+  @media (min-width: $break-md-min) {
+    height: 1.2em;
+    width: 1.2em;
+  }
 
   // Firefox workaround:
   // Using flexbox on buttons is not working in Firefox
   _::-moz-progress-bar, body:last-child & {
     float: left;
+  }
+}
+
+
+
+// TEXT for BUTTONS
+// =====================================
+
+.c-button__text {
+  margin-left: 0.8em;
+
+  @media (min-width: $break-md-min) {
+    margin-left: 0.6em;
   }
 }
