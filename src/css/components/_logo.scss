@@ -9,6 +9,7 @@
 
 .c-logo {
   display: flex;
+  justify-content: center;
   align-items: center;
 
   font-size: 2em;
@@ -31,10 +32,23 @@
     fill: currentColor;
   }
 
+  .c-logo__icon--header {
+    width: 1em;
+    height: 1em;
+
+    @media (min-width: $break-sm-min) {
+      width: 1.2em;
+      height: 1.2em;
+    }
+  }
+
   .c-logo__text {
-    display: none;
     flex-shrink: 0;
     margin-left: 0.4em;
+  }
+
+  .c-logo__text--header {
+    display: none;
 
     @media (min-width: $break-sm-min) {
       display: block;
