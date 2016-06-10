@@ -1,3 +1,181 @@
 /* FORMS
  * All your form styles go in this file.
 ============================================================================= */
+
+
+
+.input,
+.textarea,
+.select {
+  display: block;
+  width: 100%;
+  margin-bottom: 1em;
+
+  background-color: $color-white;
+
+  border: none;
+  border-radius: 0.2em;
+
+  &:hover,
+  &:focus {
+
+  }
+
+  &:disabled {
+    background-color: $color-mist;
+  }
+
+  &::placeholder {
+    color: $color-silver;
+    opacity: 1;
+  }
+}
+
+.input--dark,
+.textarea--dark,
+.select--dark {
+  color: $color-white;
+  background-color: $color-shadow;
+
+  &:disabled {
+    background-color: $color-silver;
+
+    &::placeholder {
+      color: $color-mist;
+    }
+  }
+}
+
+
+::placeholder {
+  color: $color-silver;
+  opacity: 1;
+}
+
+
+
+// INPUT
+// =====================================
+
+.input {
+  height: 2.5em;
+  padding: 0 1em;
+
+  @media (min-width: $break-md-min) {
+    height: 2em;
+    padding: 0 0.6em;
+  }
+}
+
+
+.radio,
+.checkbox {
+  @include sr-only;
+
+  + label {
+    display: block;
+    margin-bottom: 1em;
+    padding-left: 1.2em;
+
+    background-position: left center;
+    background-size: 1em;
+    background-repeat: no-repeat;
+  }
+
+  &:disabled + label {
+    color: $color-silver;
+  }
+}
+
+
+// This awesome tool helps generating SVG data-uris:
+// http://codepen.io/jakob-e/pen/doMoML
+//
+// Usage:
+// svg-url('svg');
+//
+// Output:
+// Encoded SVG optimized for most browsers
+
+.radio {
+  + label {
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-shadow}"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
+  }
+
+  &:disabled + label {
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-silver}"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
+  }
+
+  &:checked + label {
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-shadow}"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
+  }
+
+  &:disabled:checked + label {
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-silver}"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
+  }
+}
+
+.checkbox {
+  + label {
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-shadow}"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>');
+  }
+
+  &:disabled + label {
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-silver}"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>');
+  }
+
+  &:checked + label {
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-shadow}"><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>');
+  }
+
+  &:disabled:checked + label {
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-silver}"><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>');
+  }
+}
+
+
+
+// TEXTAREA
+// =====================================
+
+.textarea {
+  padding: 1em;
+
+  @media (min-width: $break-md-min) {
+    padding: 0.6em;
+  }
+}
+
+
+
+// SELECT
+// =====================================
+
+.select {
+  appearance: none;
+
+  height: 2.5em;
+  padding: 0 1em;
+
+  background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-shadow}"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-position: right 0.2em center;
+  background-size: 1.6em;
+  background-repeat: no-repeat;
+
+  @media (min-width: $break-md-min) {
+    height: 2em;
+    padding: 0 0.6em;
+  }
+}
+
+.select--dark {
+  background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-white}"><path d="M7 10l5 5 5-5z"/></svg>');
+}
+
+
+// LABEL
+// =====================================
+
+label {
+  cursor: pointer;
+}
