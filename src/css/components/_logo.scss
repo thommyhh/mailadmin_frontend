@@ -1,0 +1,71 @@
+/* LOGO
+ * The one and the only.
+============================================================================= */
+
+
+
+// LOGO MAILADMIN
+// =====================================
+
+.c-logo {
+  display: flex;
+  align-items: center;
+
+  font-size: 2em;
+  text-decoration: none;
+}
+
+.c-logo--dark {
+  color: $color-shadow;
+}
+
+.c-logo--light {
+  color: $color-white;
+}
+
+  .c-logo__icon {
+    flex-shrink: 0;
+    width: 1.2em;
+    height: 1.2em;
+
+    fill: currentColor;
+  }
+
+  .c-logo__text {
+    display: none;
+    flex-shrink: 0;
+    margin-left: 0.4em;
+
+    @media (min-width: $break-sm-min) {
+      display: block;
+    }
+  }
+
+
+
+// LOGO KAPP-HAMBURG
+// =====================================
+
+.c-logo-kapp-hamburg {
+  font-size: 1.2em;
+
+  .monochrome,
+  .color {
+    fill: $color-silver;
+    transition: fill 0.1s;
+  }
+
+  &:hover {
+    .monochrome {
+      fill: $color-charcoal;
+    }
+
+    .color {
+      fill: $color-orange;
+    }
+  }
+}
+
+  .c-logo-kapp-hamburg__icon {
+    height: 1em;
+  }

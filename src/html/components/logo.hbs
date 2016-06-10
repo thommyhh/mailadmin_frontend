@@ -1,0 +1,48 @@
+---
+title: The Logo
+description: The one and the only.
+---
+{{#extend "layouts/components"}}
+  {{#content "content"}}
+    <article class="sg-article">
+      <header class="sg-article__header">
+        <h2 class="sg-article__title">Dark</h2>
+        <p class="sg-article__description">Dark logo on light ground.</p>
+      </header>
+
+      <div class="sg-article__body">
+
+        {{> includes/logo-dark}}
+
+      </div>
+    </article>
+
+
+    <article class="sg-article">
+      <header class="sg-article__header">
+        <h2 class="sg-article__title">Light</h2>
+        <p class="sg-article__description">Light logo on dark ground.</p>
+      </header>
+
+      <div class="sg-article__body sg-article__body--dark">
+
+        {{> includes/logo-light}}
+
+      </div>
+    </article>
+
+
+    <article class="sg-article">
+      <header class="sg-article__header">
+        <h2 class="sg-article__title">Kapp-Hamburg</h2>
+        <p class="sg-article__description">The very special branding Logo with a hover twist.</p>
+      </header>
+
+      <div class="sg-article__body">
+
+        {{> includes/logo-kapp-hamburg}}
+
+      </div>
+    </article>
+  {{/content}}
+{{/extend}}
