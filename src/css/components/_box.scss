@@ -1,0 +1,29 @@
+/* BOX
+ * Three letters for a very versatile thingy.
+============================================================================= */
+
+
+
+.c-box {
+  display: flex;
+  flex-direction: column;
+}
+
+  .c-box__title {
+    margin: 0;
+    padding: 1rem;
+
+    font-weight: 400;
+    color: $color-white;
+
+    background-color: $color-shadow;
+  }
+
+  .c-box__content {
+    margin: 0;
+    padding: 1rem;
+
+    color: $color-charcoal;
+
+    background-color: $color-mist;
+  }

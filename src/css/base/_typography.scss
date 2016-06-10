@@ -1,2 +1,18 @@
 /* TYPOGRAPHY
 ============================================================================= */
+
+
+
+p {
+  margin: 0 0 1em;
+}
+
+
+a {
+  color: #1248FF;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

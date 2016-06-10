@@ -1,0 +1,45 @@
+---
+title: Box
+description: Three laters for a very versatile thingy.
+---
+{{#extend "layouts/components"}}
+  {{#content "content"}}
+    <article class="sg-article">
+      <header class="sg-article__header">
+        <h2 class="sg-article__title">Text</h2>
+      </header>
+
+      <div class="sg-article__body">
+
+        {{> includes/box-text}}
+
+      </div>
+    </article>
+
+
+    <article class="sg-article">
+      <header class="sg-article__header">
+        <h2 class="sg-article__title">Login</h2>
+      </header>
+
+      <div class="sg-article__body">
+
+        {{> includes/box-login}}
+
+      </div>
+    </article>
+
+
+    <article class="sg-article">
+      <header class="sg-article__header">
+        <h2 class="sg-article__title">Form</h2>
+      </header>
+
+      <div class="sg-article__body">
+
+        {{> includes/box-form}}
+
+      </div>
+    </article>
+  {{/content}}
+{{/extend}}
