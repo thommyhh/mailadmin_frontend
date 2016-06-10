@@ -4,9 +4,7 @@
 
 
 
-.input,
-.textarea,
-.select {
+.c-form-field {
   display: block;
   width: 100%;
   margin-bottom: 1em;
@@ -15,14 +13,18 @@
 
   border: none;
   border-radius: 0.2em;
+  outline: none;
+
+  transition: box-shadow 0.2s;
 
   &:hover,
   &:focus {
-
+    box-shadow: 0 0 0 0.1em $color-shadow;
   }
 
   &:disabled {
-    background-color: $color-mist;
+    background-color: darken($color-white, 10%);
+    box-shadow: none;
   }
 
   &::placeholder {
@@ -31,33 +33,31 @@
   }
 }
 
-.input--dark,
-.textarea--dark,
-.select--dark {
+.c-form-field--dark {
   color: $color-white;
   background-color: $color-shadow;
 
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 0 0.1em $color-mist;
+  }
+
   &:disabled {
-    background-color: $color-silver;
+    background-color: darken($color-shadow, 10%);
+    box-shadow: none;
 
     &::placeholder {
-      color: $color-mist;
+      color: darken($color-silver, 10%);
     }
   }
 }
 
 
-::placeholder {
-  color: $color-silver;
-  opacity: 1;
-}
 
-
-
-// INPUT
+// TEXT
 // =====================================
 
-.input {
+.c-form-field--text {
   height: 2.5em;
   padding: 0 1em;
 
@@ -68,8 +68,50 @@
 }
 
 
-.radio,
-.checkbox {
+
+// TEXTAREA
+// =====================================
+
+.c-form-field--textarea {
+  padding: 1em;
+
+  @media (min-width: $break-md-min) {
+    padding: 0.6em;
+  }
+}
+
+
+
+// SELECT
+// =====================================
+
+.c-form-field--select {
+  appearance: none;
+
+  height: 2.5em;
+  padding: 0 1em;
+
+  background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-shadow}"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-position: right 0.2em center;
+  background-size: 1.6em;
+  background-repeat: no-repeat;
+
+  &.c-form-field--dark {
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-white}"><path d="M7 10l5 5 5-5z"/></svg>');
+  }
+
+  @media (min-width: $break-md-min) {
+    height: 2em;
+    padding: 0 0.6em;
+  }
+}
+
+
+
+// RADIO / CHECKBOX
+// =====================================
+
+.c-form-choice {
   @include sr-only;
 
   + label {
@@ -97,7 +139,7 @@
 // Output:
 // Encoded SVG optimized for most browsers
 
-.radio {
+.c-form-choice--radio {
   + label {
     background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-shadow}"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
   }
@@ -115,7 +157,7 @@
   }
 }
 
-.checkbox {
+.c-form-choice--checkbox {
   + label {
     background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-shadow}"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>');
   }
@@ -133,44 +175,6 @@
   }
 }
 
-
-
-// TEXTAREA
-// =====================================
-
-.textarea {
-  padding: 1em;
-
-  @media (min-width: $break-md-min) {
-    padding: 0.6em;
-  }
-}
-
-
-
-// SELECT
-// =====================================
-
-.select {
-  appearance: none;
-
-  height: 2.5em;
-  padding: 0 1em;
-
-  background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-shadow}"><path d="M7 10l5 5 5-5z"/></svg>');
-  background-position: right 0.2em center;
-  background-size: 1.6em;
-  background-repeat: no-repeat;
-
-  @media (min-width: $break-md-min) {
-    height: 2em;
-    padding: 0 0.6em;
-  }
-}
-
-.select--dark {
-  background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-white}"><path d="M7 10l5 5 5-5z"/></svg>');
-}
 
 
 // LABEL
