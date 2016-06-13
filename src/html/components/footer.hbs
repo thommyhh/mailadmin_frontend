@@ -1,0 +1,23 @@
+---
+title: Footer
+description: That thing at the end of all pages.
+---
+
+{{#extend "layouts/components"}}
+{{#content "body"}}
+
+  {{#embed "layouts/article" title="Login"}}
+  {{#content "body"}}
+    {{> includes/footer-login}}
+  {{/content}}
+  {{/embed}}
+
+
+  {{#embed "layouts/article" title="Logged in"}}
+  {{#content "body"}}
+    {{> includes/footer-logged-in}}
+  {{/content}}
+  {{/embed}}
+
+{{/content}}
+{{/extend}}

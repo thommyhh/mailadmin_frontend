@@ -1,0 +1,55 @@
+/* FOOTER
+ * That thing at the end of all pages.
+============================================================================= */
+
+
+
+.c-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6em;
+
+  background-color: $color-shadow;
+
+  @media (min-width: $break-md-min) {
+    height: 4em;
+  }
+}
+
+
+
+// FOOTER NAV
+// =====================================
+
+.c-footer-nav {
+  margin-left: 1.4em;
+}
+
+  .c-footer-nav__list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+    .c-footer-nav__item {
+      display: block;
+      margin-left: 0.6em;
+
+      &:not(:first-child)::before {
+        content: '•';
+        margin-right: 0.6em;
+        color: $color-silver;
+      }
+    }
+
+      .c-footer-nav__link {
+        color: $color-silver;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+          color: lighten($color-silver, 20%);
+        }
+      }

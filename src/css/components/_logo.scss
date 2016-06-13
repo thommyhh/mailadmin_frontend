@@ -66,20 +66,21 @@
   .monochrome,
   .color {
     fill: $color-silver;
-    transition: fill 0.1s;
+    transition: fill 0.2s;
   }
 
   &:hover {
     .monochrome {
-      fill: $color-charcoal;
+      fill: lighten($color-silver, 20%);
     }
 
     .color {
-      fill: $color-orange;
+      fill: lighten($color-orange, 20%);
     }
   }
 }
 
   .c-logo-kapp-hamburg__icon {
+    display: block;
     height: 1em;
   }
