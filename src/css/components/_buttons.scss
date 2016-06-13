@@ -9,7 +9,6 @@
 
 .c-button {
   display: inline-flex;
-  flex-direction: row;
   align-items: center;
   height: 2.5em;
   padding: 0 1em;
@@ -45,6 +44,12 @@
 
     font-size: 0.9em;
   }
+}
+
+// Firefox workaround:
+// Using flexbox on buttons is not working in Firefox
+_::-moz-progress-bar, body:last-child button.c-button {
+  display: inline-table;
 }
 
 
