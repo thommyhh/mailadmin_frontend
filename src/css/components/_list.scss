@@ -24,15 +24,24 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  padding: 1em 0;
+  padding: 1em 1rem;
 
-  border-bottom: 1px solid $color-mist;
+  &::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    bottom: 0;
+    left: 1rem;
+    right: 1rem;
+
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 
   @media (min-width: $break-md-min) {
     flex-direction: row;
     justify-content: space-between;
     height: 4em;
-    padding: 0;
+    padding: 0 1rem;
   }
 
   &:hover {
@@ -126,12 +135,12 @@
     color: $color-charcoal;
   }
 
-  .c-list__item--inactive & {
+  .c-list__item.is-inactive & {
     color: $color-silver;
   }
 
-  .c-list__item--inactive:hover &,
-  .c-list__item--inactive &:focus {
+  .c-list__item.is-inactive:hover &,
+  .c-list__item.is-inactive &:focus {
     color: $color-shadow;
   }
 }
@@ -148,6 +157,41 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.c-list__title--multiline {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 70%;
+
+  font-size: 1.1em;
+
+  > * {
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @media (min-width: $break-lg-min) {
+    flex-direction: row;
+    height: auto;
+
+    font-size: 1.3em;
+  }
+}
+
+  .c-list__icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+
+    fill: currentColor;
+
+    @media (min-width: $break-lg-min) {
+      margin-left: 0.4em;
+    }
+  }
 
 
 // More button

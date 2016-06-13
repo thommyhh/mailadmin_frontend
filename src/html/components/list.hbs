@@ -1,6 +1,6 @@
 ---
 title: Lists
-description: They list domains, accounts, forwards and aliases
+description: They list domains, accounts, aliases, forwards and mailing lists.
 ---
 
 {{#extend "layouts/components"}}
@@ -15,6 +15,34 @@ description: They list domains, accounts, forwards and aliases
       {{> includes/list-domain}}
       {{> includes/list-domain}}
       {{> includes/list-domain}}
+    </ul>
+  {{/content}}
+  {{/embed}}
+
+
+  {{#embed "layouts/article" title="Alias"}}
+  {{#content "body"}}
+    <ul class="c-list">
+      {{> includes/list-alias}}
+      {{> includes/list-alias}}
+      {{> includes/list-alias}}
+      {{> includes/list-alias}}
+      {{> includes/list-alias-inactive}}
+      {{> includes/list-alias}}
+    </ul>
+  {{/content}}
+  {{/embed}}
+
+
+  {{#embed "layouts/article" title="Forward"}}
+  {{#content "body"}}
+    <ul class="c-list">
+      {{> includes/list-forward-inactive}}
+      {{> includes/list-forward}}
+      {{> includes/list-forward}}
+      {{> includes/list-forward}}
+      {{> includes/list-forward}}
+      {{> includes/list-forward}}
     </ul>
   {{/content}}
   {{/embed}}
