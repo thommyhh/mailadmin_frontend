@@ -46,6 +46,20 @@
   }
 }
 
+.c-button--no-bg {
+  background: none;
+  color: $color-shadow;
+
+  &:hover,
+  &:focus {
+    background-color: darken($color-white, 15%);
+  }
+
+  &:active {
+    background-color: darken($color-white, 25%);
+  }
+}
+
 // Firefox workaround:
 // Using flexbox on buttons is not working in Firefox
 _::-moz-progress-bar, body:last-child button.c-button {
