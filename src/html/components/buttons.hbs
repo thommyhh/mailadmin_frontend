@@ -2,157 +2,118 @@
 title: Buttons
 description: Buttons. You click on them. They do stuff.
 ---
+
 {{#extend "layouts/components"}}
-  {{#content "content"}}
-    <article class="sg-article">
-      <header class="sg-article__header">
-        <h2 class="sg-article__title">Default</h2>
-        <p class="sg-article__description">The default button.</p>
-      </header>
+{{#content "body"}}
 
-      <div class="sg-article__body">
-
-        <button class="c-button">Button</button>
-        <input type="button" class="c-button" value="Input">
-        <a href="#" class="c-button">Link</a>
-
-      </div>
-    </article>
-
-
-    <article class="sg-article">
-      <header class="sg-article__header">
-        <h2 class="sg-article__title">Button with Icon</h2>
-        <p class="sg-article__description">The default button with an icon.</p>
-      </header>
-
-      <div class="sg-article__body">
-
-        <button class="c-button">
-          <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
-          <span class="c-button__text">Button</span>
-        </button>
-        <a href="#" class="c-button">
-          <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
-          <span class="c-button__text">Link</span>
-        </a>
-
-        <button class="c-button">
-          <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#device-hub"/></svg>
-          <span class="c-button__text">Button</span>
-        </button>
-        <a href="#" class="c-button">
-          <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#device-hub"/></svg>
-          <span class="c-button__text">Link</span>
-        </a>
-
-      </div>
-    </article>
-
-
-    <article class="sg-article">
-      <header class="sg-article__header">
-        <h2 class="sg-article__title">Button with Icon only</h2>
-        <p class="sg-article__description">The default button with an icon but no text.</p>
-      </header>
-
-      <div class="sg-article__body">
-
-        <button class="c-button">
-          <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
-          <span class="c-button__text u-sr-only">Button</span>
-        </button>
-        <a href="#" class="c-button">
-          <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
-          <span class="c-button__text u-sr-only">Link</span>
-        </a>
-
-        <button class="c-button">
-          <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#device-hub"/></svg>
-          <span class="c-button__text u-sr-only">Button</span>
-        </button>
-        <a href="#" class="c-button">
-          <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#device-hub"/></svg>
-          <span class="c-button__text u-sr-only">Link</span>
-        </a>
-
-      </div>
-    </article>
-
-
-    <article class="sg-article">
-      <header class="sg-article__header">
-        <h2 class="sg-article__title">Highlighted</h2>
-        <p class="sg-article__description">A glowing button to catch your attention.</p>
-      </header>
-
-      <div class="sg-article__body">
-
-        <button class="c-button c-button--highlight">Button</button>
-        <input type="button" class="c-button c-button--highlight" value="Input">
-        <a href="#" class="c-button c-button--highlight">Link</a>
-
-      </div>
-    </article>
-
-
-    <article class="sg-article">
-      <header class="sg-article__header">
-        <h2 class="sg-article__title">Highlighted with Icon</h2>
-        <p class="sg-article__description">The highlighted button with an icon.</p>
-      </header>
-
-      <div class="sg-article__body">
-
-        <button class="c-button c-button--highlight">
-          <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
-          <span class="c-button__text">Button</span>
-        </button>
-        <a href="#" class="c-button c-button--highlight">
-          <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
-          <span class="c-button__text">Link</span>
-        </a>
-
-        <button class="c-button c-button--highlight">
-          <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#device-hub"/></svg>
-          <span class="c-button__text">Button</span>
-        </button>
-        <a href="#" class="c-button c-button--highlight">
-          <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#device-hub"/></svg>
-          <span class="c-button__text">Link</span>
-        </a>
-
-      </div>
-    </article>
-
-
-    <article class="sg-article">
-      <header class="sg-article__header">
-        <h2 class="sg-article__title">Highlighted with Icon only</h2>
-        <p class="sg-article__description">The highlighted button with an icon but no text.</p>
-      </header>
-
-      <div class="sg-article__body">
-
-        <button class="c-button c-button--highlight">
-          <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
-          <span class="c-button__text u-sr-only">Button</span>
-        </button>
-        <a href="#" class="c-button c-button--highlight">
-          <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
-          <span class="c-button__text u-sr-only">Link</span>
-        </a>
-
-        <button class="c-button c-button--highlight">
-          <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#device-hub"/></svg>
-          <span class="c-button__text u-sr-only">Button</span>
-        </button>
-        <a href="#" class="c-button c-button--highlight">
-          <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#device-hub"/></svg>
-          <span class="c-button__text u-sr-only">Link</span>
-        </a>
-
-      </div>
-    </article>
+  {{#embed "layouts/article" title="Default"}}
+  {{#content "body"}}
+    <button class="c-button">Button</button>
+    <input type="button" class="c-button" value="Input">
+    <a href="#" class="c-button">Link</a>
   {{/content}}
+  {{/embed}}
+
+
+  {{#embed "layouts/article" title="Icon and Label"}}
+  {{#content "body"}}
+    <button class="c-button">
+      <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
+      <span class="c-button__text">Button</span>
+    </button>
+    <a href="#" class="c-button">
+      <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
+      <span class="c-button__text">Link</span>
+    </a>
+
+    <button class="c-button">
+      <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#device-hub"/></svg>
+      <span class="c-button__text">Button</span>
+    </button>
+    <a href="#" class="c-button">
+      <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#device-hub"/></svg>
+      <span class="c-button__text">Link</span>
+    </a>
+  {{/content}}
+  {{/embed}}
+
+
+  {{#embed "layouts/article" title="Default"}}
+  {{#content "body"}}
+    <button class="c-button">
+      <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
+      <span class="c-button__text u-sr-only">Button</span>
+    </button>
+    <a href="#" class="c-button">
+      <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
+      <span class="c-button__text u-sr-only">Link</span>
+    </a>
+
+    <button class="c-button">
+      <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#device-hub"/></svg>
+      <span class="c-button__text u-sr-only">Button</span>
+    </button>
+    <a href="#" class="c-button">
+      <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#device-hub"/></svg>
+      <span class="c-button__text u-sr-only">Link</span>
+    </a>
+  {{/content}}
+  {{/embed}}
+
+
+  {{#embed "layouts/article" title="Highlighted"}}
+  {{#content "body"}}
+    <button class="c-button c-button--highlight">Button</button>
+    <input type="button" class="c-button c-button--highlight" value="Input">
+    <a href="#" class="c-button c-button--highlight">Link</a>
+  {{/content}}
+  {{/embed}}
+
+
+  {{#embed "layouts/article" title="Highlighted with Icon and Label"}}
+  {{#content "body"}}
+    <button class="c-button c-button--highlight">
+      <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
+      <span class="c-button__text">Button</span>
+    </button>
+    <a href="#" class="c-button c-button--highlight">
+      <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
+      <span class="c-button__text">Link</span>
+    </a>
+
+    <button class="c-button c-button--highlight">
+      <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#device-hub"/></svg>
+      <span class="c-button__text">Button</span>
+    </button>
+    <a href="#" class="c-button c-button--highlight">
+      <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#device-hub"/></svg>
+      <span class="c-button__text">Link</span>
+    </a>
+  {{/content}}
+  {{/embed}}
+
+
+  {{#embed "layouts/article" title="Highlighted with Icon and without Label"}}
+  {{#content "body"}}
+    <button class="c-button c-button--highlight">
+      <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
+      <span class="c-button__text u-sr-only">Button</span>
+    </button>
+    <a href="#" class="c-button c-button--highlight">
+      <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
+      <span class="c-button__text u-sr-only">Link</span>
+    </a>
+
+    <button class="c-button c-button--highlight">
+      <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#device-hub"/></svg>
+      <span class="c-button__text u-sr-only">Button</span>
+    </button>
+    <a href="#" class="c-button c-button--highlight">
+      <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#device-hub"/></svg>
+      <span class="c-button__text u-sr-only">Link</span>
+    </a>
+  {{/content}}
+  {{/embed}}
+
+{{/content}}
 {{/extend}}

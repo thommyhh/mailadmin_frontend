@@ -1,45 +1,30 @@
 ---
 title: Box
-description: Three laters for a very versatile thingy.
+description: Three letters for a very versatile thingy.
 ---
+
 {{#extend "layouts/components"}}
-  {{#content "content"}}
-    <article class="sg-article">
-      <header class="sg-article__header">
-        <h2 class="sg-article__title">Text</h2>
-      </header>
+{{#content "body"}}
 
-      <div class="sg-article__body">
-
-        {{> includes/box-text}}
-
-      </div>
-    </article>
-
-
-    <article class="sg-article">
-      <header class="sg-article__header">
-        <h2 class="sg-article__title">Login</h2>
-      </header>
-
-      <div class="sg-article__body">
-
-        {{> includes/box-login}}
-
-      </div>
-    </article>
-
-
-    <article class="sg-article">
-      <header class="sg-article__header">
-        <h2 class="sg-article__title">Form</h2>
-      </header>
-
-      <div class="sg-article__body">
-
-        {{> includes/box-form}}
-
-      </div>
-    </article>
+  {{#embed "layouts/article" title="Text"}}
+  {{#content "body"}}
+    {{> includes/box-text}}
   {{/content}}
+  {{/embed}}
+
+
+  {{#embed "layouts/article" title="Login"}}
+  {{#content "body"}}
+    {{> includes/box-login}}
+  {{/content}}
+  {{/embed}}
+
+
+  {{#embed "layouts/article" title="Form"}}
+  {{#content "body"}}
+    {{> includes/box-form}}
+  {{/content}}
+  {{/embed}}
+
+{{/content}}
 {{/extend}}

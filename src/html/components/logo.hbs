@@ -2,47 +2,30 @@
 title: The Logo
 description: The one and the only.
 ---
+
 {{#extend "layouts/components"}}
-  {{#content "content"}}
-    <article class="sg-article">
-      <header class="sg-article__header">
-        <h2 class="sg-article__title">Standalone</h2>
-        <p class="sg-article__description">Dark logo for standalone use on light background.</p>
-      </header>
-
-      <div class="sg-article__body">
-
-        {{> includes/logo-standalone}}
-
-      </div>
-    </article>
+{{#content "body"}}
 
 
-    <article class="sg-article">
-      <header class="sg-article__header">
-        <h2 class="sg-article__title">Header</h2>
-        <p class="sg-article__description">Light logo for the dark header.</p>
-      </header>
-
-      <div class="sg-article__body sg-article__body--dark">
-
-        {{> includes/logo-header}}
-
-      </div>
-    </article>
-
-
-    <article class="sg-article">
-      <header class="sg-article__header">
-        <h2 class="sg-article__title">Kapp-Hamburg</h2>
-        <p class="sg-article__description">The very special branding Logo with a hover twist.</p>
-      </header>
-
-      <div class="sg-article__body">
-
-        {{> includes/logo-kapp-hamburg}}
-
-      </div>
-    </article>
+  {{#embed "layouts/article" title="Standalone" description="Dark logo for light backgrounds."}}
+  {{#content "body"}}
+    {{> includes/logo-standalone}}
   {{/content}}
+  {{/embed}}
+
+
+  {{#embed "layouts/article" title="Header" description="Light logo for the dark header." body-class="dark"}}
+  {{#content "body"}}
+    {{> includes/logo-header}}
+  {{/content}}
+  {{/embed}}
+
+
+  {{#embed "layouts/article" title="Kapp-Hamburg" description="The very special branding logo with a hover twist."}}
+  {{#content "body"}}
+    {{> includes/logo-kapp-hamburg}}
+  {{/content}}
+  {{/embed}}
+
+{{/content}}
 {{/extend}}

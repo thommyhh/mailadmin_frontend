@@ -2,25 +2,22 @@
 title: Lists
 description: They list domains, accounts, forwards and aliases
 ---
+
 {{#extend "layouts/components"}}
-  {{#content "content"}}
-    <article class="sg-article">
-      <header class="sg-article__header">
-        <h2 class="sg-article__title">Domain</h2>
-      </header>
+{{#content "body"}}
 
-      <div class="sg-article__body">
-
-        <ul class="c-list">
-          {{> includes/list-domain}}
-          {{> includes/list-domain}}
-          {{> includes/list-domain-inactive}}
-          {{> includes/list-domain}}
-          {{> includes/list-domain}}
-          {{> includes/list-domain}}
-        </ul>
-
-      </div>
-    </article>
+  {{#embed "layouts/article" title="Domain"}}
+  {{#content "body"}}
+    <ul class="c-list">
+      {{> includes/list-domain}}
+      {{> includes/list-domain}}
+      {{> includes/list-domain-inactive}}
+      {{> includes/list-domain}}
+      {{> includes/list-domain}}
+      {{> includes/list-domain}}
+    </ul>
   {{/content}}
+  {{/embed}}
+
+{{/content}}
 {{/extend}}
