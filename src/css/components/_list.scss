@@ -113,11 +113,26 @@
   overflow: hidden;
 
   text-decoration: none;
+  color: $color-shadow;
 
   outline: none;
 
   &:focus {
+    color: $color-charcoal;
     background-color: darken($color-white, 15%);
+  }
+
+  .c-list__item:hover & {
+    color: $color-charcoal;
+  }
+
+  .c-list__item--inactive & {
+    color: $color-silver;
+  }
+
+  .c-list__item--inactive:hover &,
+  .c-list__item--inactive &:focus {
+    color: $color-shadow;
   }
 }
 
@@ -132,20 +147,6 @@
   font-weight: 100;
   text-overflow: ellipsis;
   white-space: nowrap;
-
-  color: $color-shadow;
-
-  .c-list__item:hover & {
-    color: $color-charcoal;
-  }
-
-  .c-list__item--inactive & {
-    color: $color-silver;
-  }
-
-  .c-list__item--inactive:hover & {
-    color: $color-shadow;
-  }
 }
 
 
