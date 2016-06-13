@@ -3,18 +3,80 @@
 
 
 
-// Only display content to screen readers
-//
-// See: http://a11yproject.com/posts/how-to-hide-content/
+// SCREENREADER ONLY
+// =====================================
 
 .u-sr-only {
   @include sr-only;
 }
 
-// Use in conjunction with .sr-only to only display content when it's focused.
-// Useful for "Skip to main content" links; see http://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
-// Credit: HTML5 Boilerplate
+
+// Use in conjunction with .u-sr-only to only display content when it's focused.
 
 .u-sr-only-focusable {
   @include sr-only-focusable;
+}
+
+
+
+// SCREENREADER ONLY for DISTINCT SPAN
+// =====================================
+
+.u-sr-only-xs {
+  @media (max-width: $break-xs-max) {
+    @include sr-only;
+  }
+}
+
+.u-sr-only-sm {
+  @media (min-width: $break-sm-min) and (max-width: $break-sm-max) {
+    @include sr-only;
+  }
+}
+
+.u-sr-only-md {
+  @media (min-width: $break-md-min) and (max-width: $break-md-max) {
+    @include sr-only;
+  }
+}
+
+.u-sr-only-lg {
+  @media (min-width: $break-lg-min) and (max-width: $break-lg-max) {
+    @include sr-only;
+  }
+}
+
+.u-sr-only-xl {
+  @media (min-width: $break-xl-min) {
+    @include sr-only;
+  }
+}
+
+
+
+// SCREENREADER ONLY below BREAKPOINT
+// =====================================
+
+.u-sr-only-below-sm {
+  @media (max-width: $break-xs-max) {
+    @include sr-only;
+  }
+}
+
+.u-sr-only-below-md {
+  @media (max-width: $break-sm-max) {
+    @include sr-only;
+  }
+}
+
+.u-sr-only-below-lg {
+  @media (max-width: $break-md-max) {
+    @include sr-only;
+  }
+}
+
+.u-sr-only-below-xl {
+  @media (max-width: $break-lg-max) {
+    @include sr-only;
+  }
 }
