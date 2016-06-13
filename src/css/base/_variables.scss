@@ -42,7 +42,7 @@ $font-stack:   Roboto, Arial, sans-serif;
 // majority of browsers use 16px as the default font-size
 
 $break-sm: 30em;  // 480px
-$break-md: 60em;  // 960px
+$break-md: 50em;  // 800px
 $break-lg: 80em;  // 1280px
 $break-xl: 100em; // 1600px
 
@@ -53,8 +53,8 @@ $break-xl: 100em; // 1600px
 
 $break-xs-max: ($break-sm - (1px / 16px)); // 480px  - 1px = 479px
 $break-sm-min:  $break-sm;                 // 480px
-$break-sm-max: ($break-md - (1px / 16px)); // 960px  - 1px = 959px
-$break-md-min:  $break-md;                 // 960px
+$break-sm-max: ($break-md - (1px / 16px)); // 800px  - 1px = 799px
+$break-md-min:  $break-md;                 // 800px
 $break-md-max: ($break-lg - (1px / 16px)); // 1280px - 1px = 1279px
 $break-lg-min:  $break-lg;                 // 1280px
 $break-lg-max: ($break-xl - (1px / 16px)); // 1600px - 1px = 1599px
