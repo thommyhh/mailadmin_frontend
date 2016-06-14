@@ -5,6 +5,7 @@
 
 
 .c-dropdown {
+  display: inline-block;
   position: relative;
 
   // Component size
@@ -51,10 +52,11 @@
   .c-dropdown__panel {
     display: none;
     position: absolute;
+    float: left;
     top: 100%;
-    left: 0;
-    padding: 1em;
+    z-index: $z-index-dropdown;
 
+    white-space: nowrap;
     color: $color-white;
 
     background-color: $color-shadow;
@@ -63,8 +65,9 @@
     &.is-visible {
       display: block;
     }
+  }
 
-    @media (min-width: $break-md-min) {
-      padding: 0.72em;
-    }
+  .c-dropdown__panel--to-left {
+    right: 0;
+    border-radius: 0.2em 0 0.2em 0.2em;
   }
