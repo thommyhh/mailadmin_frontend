@@ -8,10 +8,10 @@
 // =====================================
 
 .c-button {
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
+  position: relative;
   height: 2.5em;
-  padding: 0 1em;
+  padding: 0.71em 1em; // Vertical padding for links
   vertical-align: middle;
   white-space: nowrap;
 
@@ -41,16 +41,19 @@
 
   @media (min-width: $break-md-min) {
     height: 2.2222222222em;
-    padding: 0 0.8em;
+    padding: 0.58em 0.8em; // Vertical padding for links
 
     font-size: 0.9em;
   }
 }
 
-// Firefox workaround:
-// Using flexbox on buttons is not working in Firefox
-_::-moz-progress-bar, body:last-child button.c-button {
-  display: inline-table;
+.c-button--icon {
+  padding-left: 2.4em;
+  text-align: left;
+
+  @media (min-width: $break-md-min) {
+    padding-left: 2em;
+  }
 }
 
 
@@ -77,20 +80,19 @@ _::-moz-progress-bar, body:last-child button.c-button {
 // =====================================
 
 .c-button__icon {
+  position: absolute;
   height: 1.4em;
   width: 1.4em;
+  top: 50%;
+  left: 1em;
+  transform: translateY(-50%);
 
   fill: currentColor;
 
   @media (min-width: $break-md-min) {
     height: 1.2em;
     width: 1.2em;
-  }
-
-  // Firefox workaround:
-  // Using flexbox on buttons is not working in Firefox
-  _::-moz-progress-bar, body:last-child & {
-    float: left;
+    left: 0.8em;
   }
 }
 
@@ -113,10 +115,11 @@ _::-moz-progress-bar, body:last-child button.c-button {
 // =====================================
 
 .c-icon-button {
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
+  position: relative;
   height: 2.5em;
-  padding: 0 0.8em;
+  width: 3.4em;
+  vertical-align: middle;
 
   background: none;
 
@@ -145,8 +148,12 @@ _::-moz-progress-bar, body:last-child button.c-button {
 }
 
   .c-icon-button__icon {
+    position: absolute;
     height: 1.8em;
     width: 1.8em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     fill: currentColor;
 
@@ -156,6 +163,6 @@ _::-moz-progress-bar, body:last-child button.c-button {
     }
 
     .c-icon-button--active-rotate.is-active & {
-      transform: rotate(180deg);
+      transform: translate(-50%, -50%) rotate(180deg);
     }
   }

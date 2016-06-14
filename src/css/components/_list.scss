@@ -214,7 +214,7 @@
 
 // Checkbox
 
-.c-list__checkbox + label {
+.c-list__item .c-form-choice + label {
   margin-bottom: 0;
   padding-top: 0.6em;
   padding-bottom: 0.6em;
@@ -222,15 +222,15 @@
   text-transform: uppercase;
 
   @media (min-width: $break-md-min) {
-    padding-top: 0;
-    padding-bottom: 0;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
   }
 }
 
 
 // Button
 
-.c-list__button {
+.c-list__item .c-button {
   flex-shrink: 0;
   margin-top: 0.6em;
 
