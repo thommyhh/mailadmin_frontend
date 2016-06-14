@@ -24,17 +24,26 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  padding: 1em 1rem;
+  padding: 0.8rem 0.6rem;
 
   &::after {
     content: '';
     position: absolute;
     height: 1px;
     bottom: 0;
-    left: 1rem;
-    right: 1rem;
+    left: 0.6rem;
+    right: 0.6rem;
 
     background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  @media (min-width: $break-sm-min) {
+    padding: 1rem;
+
+    &::after {
+      left: 1rem;
+      right: 1rem;
+    }
   }
 
   @media (min-width: $break-md-min) {
