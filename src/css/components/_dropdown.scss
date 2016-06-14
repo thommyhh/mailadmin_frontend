@@ -1,0 +1,70 @@
+/* DROPDOWN
+ * Click a button and an awesome menu pops up.
+============================================================================= */
+
+
+
+.c-dropdown {
+  position: relative;
+
+  // Component size
+  font-size: 1rem;
+}
+
+  .c-dropdown__button {
+    position: relative;
+    padding-right: 2.2em;
+
+    &.is-active {
+      background-color: darken($color-shadow, 15%);
+
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+
+      &:hover,
+      &:focus {
+        background-color: darken($color-shadow, 25%);
+      }
+    }
+  }
+
+  .c-dropdown__icon {
+    position: absolute;
+    height: 1.8em;
+    width: 1.8em;
+    top: 50%;
+    right: 0.4em;
+    transform: translateY(-50%);
+
+    fill: currentColor;
+
+    .c-dropdown__button.is-active & {
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    @media (min-width: $break-md-min) {
+      height: 1.6em;
+      width: 1.6em;
+    }
+  }
+
+  .c-dropdown__panel {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 1em;
+
+    color: $color-white;
+
+    background-color: $color-shadow;
+    border-radius: 0 0.2em 0.2em 0.2em;
+
+    &.is-visible {
+      display: block;
+    }
+
+    @media (min-width: $break-md-min) {
+      padding: 0.72em;
+    }
+  }

@@ -1,0 +1,30 @@
+---
+title: Dropdown
+description: Click a button and an awesome menu pops up.
+---
+
+{{#extend "layouts/components"}}
+{{#content "body"}}
+
+  {{#embed "layouts/article" title="Text"}}
+  {{#content "body"}}
+    {{> includes/dropdown-text}}
+  {{/content}}
+  {{/embed}}
+
+
+  {{#embed "layouts/article" title="Icon"}}
+  {{#content "body"}}
+    {{> includes/dropdown-icon}}
+  {{/content}}
+  {{/embed}}
+
+
+  {{#embed "layouts/article" title="Icon and Text"}}
+  {{#content "body"}}
+    {{> includes/dropdown-icon-and-text}}
+  {{/content}}
+  {{/embed}}
+
+{{/content}}
+{{/extend}}
