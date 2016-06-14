@@ -1,0 +1,77 @@
+/* FORM-AUTOCOMPLETE
+============================================================================= */
+
+
+
+.c-form-autocomplete {
+  position: relative;
+}
+
+  .c-form-autocomplete__input {
+    margin: 0;
+
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-white}"><path d="M7 10l5 5 5-5z"/></svg>');
+
+    &.is-active {
+      background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-white}"><path d="M7 10l5 5 5-5z"/></svg>');
+    }
+  }
+
+  .c-form-autocomplete__panel {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    background-color: $color-shadow;
+
+    border-radius: 0 0 0.2em 0.2em;
+
+    &.is-visible {
+      display: block;
+    }
+  }
+
+    .c-form-autocomplete__list {
+      margin: 0;
+      padding: 0;
+    }
+
+      .c-form-autocomplete__item {
+        display: block;
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 1em;
+          right: 1em;
+          height: 1px;
+
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+      }
+
+        .c-form-autocomplete__link {
+          display: block;
+          padding: 1em;
+
+          text-decoration: none;
+          color: $color-white;
+
+          outline: none;
+
+          &:hover,
+          &:focus {
+            background-color: rgba(255, 255, 255, 0.08);
+          }
+        }
+
+        .c-form-autocomplete__link--muted {
+          font-size: 0.8em;
+          text-align: center;
+          text-transform: uppercase;
+          color: $color-mist;
+        }
