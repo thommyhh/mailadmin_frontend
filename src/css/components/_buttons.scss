@@ -117,8 +117,9 @@
 .c-icon-button {
   display: inline-block;
   position: relative;
-  height: 2.5em;
   width: 3.4em;
+  height: 2.5em;
+  padding: 0;
   vertical-align: middle;
 
   background: none;
@@ -142,8 +143,8 @@
   }
 
   @media (min-width: $break-md-min) {
+    width: 2.5em;
     height: 2em;
-    padding: 0 0.6em;
   }
 }
 
