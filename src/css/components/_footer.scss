@@ -13,6 +13,9 @@
 
   background-color: $color-shadow;
 
+  // Component size
+  font-size: 1rem;
+
   @media (min-width: $break-md-min) {
     height: 4em;
   }

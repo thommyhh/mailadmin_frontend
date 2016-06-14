@@ -6,7 +6,7 @@ description: Buttons. You click on them. They do stuff.
 {{#extend "layouts/components"}}
 {{#content "body"}}
 
-  {{#embed "layouts/article" title="Default"}}
+  {{#embed "layouts/article" title="Default w/ Label"}}
   {{#content "body"}}
     <button class="c-button">Button</button>
     <input type="button" class="c-button" value="Input">
@@ -15,7 +15,7 @@ description: Buttons. You click on them. They do stuff.
   {{/embed}}
 
 
-  {{#embed "layouts/article" title="Icon and Label"}}
+  {{#embed "layouts/article" title="Default w/ Icon and Label"}}
   {{#content "body"}}
     <button class="c-button">
       <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
@@ -38,7 +38,7 @@ description: Buttons. You click on them. They do stuff.
   {{/embed}}
 
 
-  {{#embed "layouts/article" title="Default"}}
+  {{#embed "layouts/article" title="Default w/ Icon and w/o Label"}}
   {{#content "body"}}
     <button class="c-button">
       <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
@@ -70,7 +70,7 @@ description: Buttons. You click on them. They do stuff.
   {{/embed}}
 
 
-  {{#embed "layouts/article" title="Highlighted with Icon and Label"}}
+  {{#embed "layouts/article" title="Highlighted w/ Icon and Label"}}
   {{#content "body"}}
     <button class="c-button c-button--highlight">
       <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
@@ -93,7 +93,7 @@ description: Buttons. You click on them. They do stuff.
   {{/embed}}
 
 
-  {{#embed "layouts/article" title="Highlighted with Icon and without Label"}}
+  {{#embed "layouts/article" title="Highlighted w/ Icon and w/o Label"}}
   {{#content "body"}}
     <button class="c-button c-button--highlight">
       <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
@@ -111,6 +111,20 @@ description: Buttons. You click on them. They do stuff.
     <a href="#" class="c-button c-button--highlight">
       <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#device-hub"/></svg>
       <span class="c-button__text u-sr-only">Link</span>
+    </a>
+  {{/content}}
+  {{/embed}}
+
+
+  {{#embed "layouts/article" title="Icon only w/o Background"}}
+  {{#content "body"}}
+    <button class="c-icon-button">
+      <svg class="c-icon-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
+      <span class="u-sr-only">Button</span>
+    </button>
+    <a href="#" class="c-icon-button">
+      <svg class="c-icon-button__icon"><use xlink:href="{{rel}}img/icons.svg#group"/></svg>
+      <span class="u-sr-only">Link</span>
     </a>
   {{/content}}
   {{/embed}}

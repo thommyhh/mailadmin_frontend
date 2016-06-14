@@ -116,7 +116,7 @@ _::-moz-progress-bar, body:last-child button.c-button {
   display: inline-flex;
   align-items: center;
   height: 2.5em;
-  padding: 0 1em;
+  padding: 0 0.8em;
 
   background: none;
 
@@ -131,28 +131,28 @@ _::-moz-progress-bar, body:last-child button.c-button {
 
   &:hover,
   &:focus {
-    background-color: darken($color-white, 15%);
+    background-color: rgba(0, 0, 0, 0.1);
   }
 
   &:active {
-    background-color: darken($color-white, 25%);
+    background-color: rgba(0, 0, 0, 0.2);
   }
 
   @media (min-width: $break-md-min) {
     height: 2em;
-    padding: 0 0.8em;
+    padding: 0 0.6em;
   }
 }
 
   .c-icon-button__icon {
-    height: 1.6em;
-    width: 1.6em;
+    height: 1.8em;
+    width: 1.8em;
 
     fill: currentColor;
 
     @media (min-width: $break-md-min) {
-      height: 1.4em;
-      width: 1.4em;
+      height: 1.6em;
+      width: 1.6em;
     }
 
     .c-icon-button--active-rotate.is-active & {

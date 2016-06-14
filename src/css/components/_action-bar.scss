@@ -1,0 +1,58 @@
+/* ACTION BAR
+ * Contains filter or actions or a title.
+============================================================================= */
+
+
+
+.c-action-bar {
+  display: flex;
+  padding: 0.8rem 0.6rem;
+
+  // Component size
+  font-size: 1rem;
+
+  background-color: $color-mist;
+
+  @media (min-width: $break-sm-min) {
+    padding: 1rem;
+  }
+
+  @media (min-width: $break-md-min) {
+    height: 4em;
+  }
+}
+
+
+  .c-action-bar__group {
+    display: flex;
+    align-items: center;
+    margin-right: 0.6rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    @media (min-width: $break-sm-min) {
+      margin-right: 1rem;
+    }
+  }
+
+  .c-action-bar__group--grow {
+    flex-grow: 1;
+  }
+
+  .c-action-bar__group--text-overflow {
+    min-width: 0;
+  }
+
+
+    .c-action-bar__title {
+      margin: 0;
+      overflow: hidden;
+
+      font-size: 1.4em;
+      font-weight: 100;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: $color-shadow;
+    }

@@ -194,40 +194,13 @@
   }
 
 
-// More button
+// Toggle Button
 
-.c-list-toggle-button {
-  padding: 0.6em;
-
-  background: none;
-  border: none;
-  outline: none;
-
-  cursor: pointer;
-
-  &:hover,
-  &:focus {
-    background-color: darken($color-white, 15%);
-  }
-
-  &:active {
-    background-color: darken($color-white, 25%);
-  }
-
+.c-list__toggle-button {
   @media (min-width: $break-md-min) {
     display: none;
   }
 }
-
-  .c-list-toggle-button__icon {
-    display: block;
-    width: 1.6em;
-    height: 1.6em;
-
-    .c-list-toggle-button.is-active & {
-      transform: rotate(180deg);
-    }
-  }
 
 
 // Checkbox
