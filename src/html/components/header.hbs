@@ -1,0 +1,23 @@
+---
+title: Header
+description: The Beginning of Everything.
+---
+
+{{#extend "layouts/components"}}
+{{#content "body"}}
+
+  {{#embed "layouts/article" title="Domain"}}
+  {{#content "body"}}
+    {{> includes/header-domain}}
+  {{/content}}
+  {{/embed}}
+
+
+  {{#embed "layouts/article" title="Account"}}
+  {{#content "body"}}
+    {{> includes/header-account}}
+  {{/content}}
+  {{/embed}}
+
+{{/content}}
+{{/extend}}

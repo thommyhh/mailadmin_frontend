@@ -50,7 +50,7 @@
   .c-logo__text--header {
     display: none;
 
-    @media (min-width: $break-sm-min) {
+    @media (min-width: $break-md-min) {
       display: block;
     }
   }
