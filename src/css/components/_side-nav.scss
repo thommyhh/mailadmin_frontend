@@ -7,6 +7,7 @@
 .c-side-nav {
   display: flex;
   position: relative;
+  height: 100%;
 
   // Component size
   font-size: 1rem;
@@ -27,14 +28,13 @@
 }
 
   .c-side-nav__list {
-    display: inline-block;
     margin: 0;
     padding: 0;
 
     background-color: $color-mist;
 
     @media (min-width: $break-md-min) {
-      display: block;
+      flex-grow: 1;
     }
   }
 
