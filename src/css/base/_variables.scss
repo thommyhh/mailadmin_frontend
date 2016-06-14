@@ -59,3 +59,11 @@ $break-md-max: ($break-lg - (1px / 16px)); // 1280px - 1px = 1279px
 $break-lg-min:  $break-lg;                 // 1280px
 $break-lg-max: ($break-xl - (1px / 16px)); // 1600px - 1px = 1599px
 $break-xl-min:  $break-xl;                 // 1600px
+
+
+
+// Z-INDEXES
+// =====================================
+
+$z-index-dropdown: 900;
+$z-index-side-nav: 1000;
