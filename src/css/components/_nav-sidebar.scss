@@ -32,6 +32,7 @@
   padding: 0;
 
   background-color: $color-mist;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
 
   @media (min-width: $break-lg-min) {
     flex-grow: 1;
@@ -90,9 +91,14 @@
 
   @media (min-width: $break-lg-min) {
     padding: 0 1rem;
-    height: 4em;
+    height: 3.0769230769em;
     font-size: 1.3em;
   }
+}
+
+.c-nav-sidebar__link--highlight {
+  color: $color-white;
+  background-color: $color-orange;
 }
 
 .c-nav-sidebar__link--muted {
