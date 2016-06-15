@@ -1,0 +1,17 @@
+---
+title: Pagination
+description: If you gained so much fame, you need multiple pages for all your domains.
+---
+
+{{#extend "layouts/components"}}
+{{#content "body"}}
+
+
+  {{#embed "layouts/article"}}
+  {{#content "body"}}
+    {{> includes/pagination}}
+  {{/content}}
+  {{/embed}}
+
+{{/content}}
+{{/extend}}

@@ -1,0 +1,65 @@
+/* PAGINATION
+ * If you gained so much fame, you need multiple pages for all your domains.
+============================================================================= */
+
+
+
+.c-pagination {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: $break-md-min) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+
+// Pagination Group
+
+.c-pagination__group {
+  display: flex;
+  align-items: flex-start;
+
+  @media (min-width: $break-md-min) {
+    align-items: center;
+  }
+}
+
+.c-pagination__group--pages {
+  flex-wrap: wrap;
+}
+
+.c-pagination__group--settings {
+  flex-direction: column;
+
+  @media (min-width: $break-md-min) {
+    flex-direction: row;
+  }
+}
+
+
+// Pagination Page
+
+.c-pagination__page {
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+
+// Pagination Items per Page
+
+.c-pagination__label {
+  margin: 0.5rem 0;
+  white-space: nowrap;
+
+  @media (min-width: $break-md-min) {
+    margin: 0 1rem 0.5rem;
+  }
+}
+
+.c-pagination__items-per-page {
+  width: auto;
+  margin: 0 0 0.5rem;
+}
