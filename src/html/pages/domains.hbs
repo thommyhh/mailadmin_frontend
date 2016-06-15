@@ -5,22 +5,41 @@ title: Domain List
 {{#extend "layouts/pages"}}
 {{#content "body"}}
 
-  {{> includes/header-default}}
+  <div class="l-container">
+    <div class="l-container__row">
+      <div class="l-container__item">
+        {{> includes/header-default}}
+      </div>
+    </div>
 
-  {{> includes/nav-horizontal-filter}}
+    <div class="l-container__row l-container__row--grow">
 
-  <ul class="c-list">
-    {{> includes/list-domain}}
-    {{> includes/list-domain}}
-    {{> includes/list-domain-inactive}}
-    {{> includes/list-domain}}
-    {{> includes/list-domain}}
-    {{> includes/list-domain}}
-  </ul>
+      <div class="l-container__item l-container__item--20">
+        {{> includes/nav-sidebar}}
+      </div>
 
-  {{> includes/pagination}}
+      <div class="l-container__item l-container__item--80">
+        {{> includes/nav-horizontal-filter}}
 
-  {{> includes/footer-logged-in}}
+        <ul class="c-list">
+          {{> includes/list-domain}}
+          {{> includes/list-domain}}
+          {{> includes/list-domain-inactive}}
+          {{> includes/list-domain}}
+          {{> includes/list-domain}}
+          {{> includes/list-domain}}
+        </ul>
+
+        {{> includes/pagination}}
+      </div>
+    </div>
+
+    <div class="l-container__row">
+      <div class="l-container__item">
+        {{> includes/footer-logged-in}}
+      </div>
+    </div>
+  </div>
 
 {{/content}}
 {{/extend}}

@@ -1,0 +1,49 @@
+/* GRID
+ * Let's align all the components we once created.
+============================================================================= */
+
+
+
+.l-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+
+// Container Row
+
+.l-container__row {
+  display: flex;
+}
+
+.l-container__row--grow {
+  flex-grow: 1;
+}
+
+
+// Container Item
+
+.l-container__item {
+  width: 100%;
+}
+
+.l-container__item--20 {
+  width: 20%;
+}
+
+.l-container__item--33 {
+  width: 33.3333333333%;
+}
+
+.l-container__item--50 {
+  width: 50%;
+}
+
+.l-container__item--66 {
+  width: 66.6666666666%;
+}
+
+.l-container__item--80 {
+  width: 80%;
+}
