@@ -22,6 +22,11 @@
 
     background-color: rgba(0, 0, 0, 0.8);
   }
+
+  @media (min-width: $break-lg-min) {
+    display: inline-flex;
+    min-width: 280px;
+  }
 }
 
 
@@ -32,10 +37,10 @@
   padding: 0;
 
   background-color: $color-mist;
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
 
   @media (min-width: $break-lg-min) {
     flex-grow: 1;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
   }
 }
 

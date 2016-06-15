@@ -8,8 +8,6 @@
 
 
 html {
-  height: 100%;
-
   font-size: $font-size-xs; // Cf. _variables.scss for pixel values
   font-family: $font-stack;
 
@@ -20,9 +18,4 @@ html {
   @media (min-width: $break-md-min) {
     font-size: $font-size-md;
   }
-}
-
-
-body {
-  height: 100%;
 }
