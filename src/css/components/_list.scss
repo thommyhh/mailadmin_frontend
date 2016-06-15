@@ -214,17 +214,9 @@
 
 // Checkbox
 
-.c-list__item .c-form-choice + label {
+.c-list__item input[type=checkbox] + label {
   margin-bottom: 0;
-  padding-top: 0.6em;
-  padding-bottom: 0.6em;
-
   text-transform: uppercase;
-
-  @media (min-width: $break-md-min) {
-    padding-top: 0.2em;
-    padding-bottom: 0.2em;
-  }
 }
 
 

@@ -8,18 +8,20 @@
 // These share similar styles
 // =====================================
 
-.c-form-field {
+input,
+textarea,
+select {
   display: block;
   width: 100%;
   margin-bottom: 1em;
+
+  color: $color-charcoal;
 
   background-color: $color-white;
 
   border: none;
   border-radius: 0.2em;
   outline: none;
-
-  transition: box-shadow 0.2s;
 
   &:hover,
   &:focus {
@@ -38,7 +40,7 @@
 }
 
 
-.c-form-field--dark {
+.c-input--dark {
   color: $color-white;
   background-color: $color-shadow;
 
@@ -48,17 +50,17 @@
   }
 
   &:disabled {
-    background-color: darken($color-shadow, 10%);
+    background-color: darken($color-shadow, 15%);
     box-shadow: none;
 
     &::placeholder {
-      color: darken($color-silver, 10%);
+      color: darken($color-silver, 25%);
     }
   }
 }
 
 
-.c-form-field--no-margin {
+.c-input--no-margin {
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -68,7 +70,8 @@
 // TEXT
 // =====================================
 
-.c-form-field--text {
+input,
+select {
   height: 2.5em;
   padding: 0 1em;
 
@@ -83,7 +86,8 @@
 // TEXTAREA
 // =====================================
 
-.c-form-field--textarea {
+textarea {
+  max-width: 100%;
   padding: 1em;
 
   @media (min-width: $break-md-min) {
@@ -96,15 +100,24 @@
 // SELECT
 // =====================================
 
-.c-form-field--select {
+select {
   appearance: none;
 
   height: 2.5em;
-  padding: 0 1em;
+  padding: 0 2.8em 0 1em;
 
+  background-position: right 0.4em center;
+  background-size: 1.4em;
+  background-repeat: no-repeat;
   background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-shadow}"><path d="M7 10l5 5 5-5z"/></svg>');
 
-  &.c-form-field--dark {
+  cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &.c-input--dark {
     background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-white}"><path d="M7 10l5 5 5-5z"/></svg>');
   }
 
@@ -119,7 +132,7 @@
 // FORM FIELD ICON
 // =====================================
 
-.c-form-field--icon {
+[class*=c-input--icon] {
   padding-right: 2.8em;
 
   background-position: right 0.6em center;
@@ -128,10 +141,10 @@
 }
 
 
-[type=search].c-form-field--icon {
+.c-input--icon-search {
   background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-shadow}"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>');
 
-  &.c-form-field--dark {
+  &.c-input--dark {
     background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-white}"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>');
   }
 }
@@ -141,77 +154,138 @@
 // RADIO / CHECKBOX
 // =====================================
 
-.c-form-choice {
+input[type=radio],
+input[type=checkbox] {
   @include sr-only;
 
   + label {
-    display: block;
-    margin-bottom: 1em;
-    padding-left: 1.2em;
+    display: flex;
+    align-items: center;
+    min-height: 2.5em;
+    margin-bottom: 0.5em;
+    padding-left: 1.4em;
+    padding-right: 0.1em;
 
     background-position: left center;
     background-size: 1em;
     background-repeat: no-repeat;
 
     border-radius: 0.2em;
+
+    &:hover {
+      box-shadow: 0 0 0 0.1em $color-shadow;
+    }
+
+    @media (min-width: $break-md-min) {
+      min-height: 2em;
+    }
+  }
+
+  &:focus + label {
+    box-shadow: 0 0 0 0.1em $color-shadow;
   }
 
   &:disabled + label {
     color: $color-silver;
+    box-shadow: none;
+
+    cursor: default;
+  }
+
+  &.c-input--dark + label {
+    color: $color-white;
+
+    &:hover {
+      box-shadow: 0 0 0 0.1em $color-mist;
+    }
+  }
+
+  &.c-input--dark:focus + label {
+    box-shadow: 0 0 0 0.1em $color-mist;
+  }
+
+  &.c-input--dark:disabled + label {
+    box-shadow: none;
+    color: darken($color-silver, 25%);
   }
 }
 
+/*
+This awesome tool helps generating SVG data-uris:
+http://codepen.io/jakob-e/pen/doMoML
 
-// This awesome tool helps generating SVG data-uris:
-// http://codepen.io/jakob-e/pen/doMoML
-//
-// Usage:
-// svg-url('svg');
-//
-// Output:
-// Encoded SVG optimized for most browsers
+Usage:
+svg-url('svg')
 
-.c-form-choice--radio {
+Output:
+url(ENCODED SVG)
+*/
+
+input[type=radio] {
   + label {
     background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-shadow}"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
+  }
+
+  &.c-input--dark + label {
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-white}"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
   }
 
   &:disabled + label {
     background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-silver}"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
   }
 
+  &.c-input--dark:disabled + label {
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{darken($color-silver, 25%)}"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
+  }
+
   &:checked + label {
     background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-shadow}"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
+  }
+
+  &.c-input--dark:checked + label {
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-white}"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
   }
 
   &:disabled:checked + label {
     background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-silver}"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
   }
 
-  &:focus + label {
-    box-shadow: 0 0 0 0.1em $color-shadow;
+  &.c-input--dark:disabled:checked + label {
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{darken($color-silver, 25%)}"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>');
   }
 }
 
-.c-form-choice--checkbox {
+input[type=checkbox] {
   + label {
     background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-shadow}"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>');
+  }
+
+  &.c-input--dark + label {
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-white}"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>');
   }
 
   &:disabled + label {
     background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-silver}"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>');
   }
 
+  &.c-input--dark:disabled + label {
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{darken($color-silver, 25%)}"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>');
+  }
+
   &:checked + label {
     background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-shadow}"><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>');
+  }
+
+  &.c-input--dark:checked + label {
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-white}"><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>');
   }
 
   &:disabled:checked + label {
     background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$color-silver}"><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>');
   }
 
-  &:focus + label {
-    box-shadow: 0 0 0 0.1em $color-shadow;
+  &.c-input--dark:disabled:checked + label {
+    background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{darken($color-silver, 25%)}"><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>');
   }
 }
 
@@ -228,10 +302,13 @@ label {
 
 
 
-// LINK
+// INPUT SUBMIT
 // =====================================
 
-.c-form-additional-link {
-  margin-left: 1em;
-  color: $color-shadow;
+input[type=submit],
+input[type=button] {
+  width: auto;
+  margin-bottom: 0;
+
+  box-shadow: none;
 }

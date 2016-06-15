@@ -167,3 +167,20 @@
       transform: translate(-50%, -50%) rotate(180deg);
     }
   }
+
+
+
+// BUTTON ADDITIONAL LINK
+// =====================================
+
+.c-button-additional-link {
+  margin-left: 1em;
+  color: $color-shadow;
+
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
