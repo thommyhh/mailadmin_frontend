@@ -98,6 +98,13 @@
     }
   }
 
+  .c-dropdown__panel--full {
+    @media (min-width: $break-sm-min) {
+      left: 0;
+      right: 0;
+    }
+  }
+
   .c-dropdown__panel--to-left {
     @media (min-width: $break-sm-min) {
       right: 0;
