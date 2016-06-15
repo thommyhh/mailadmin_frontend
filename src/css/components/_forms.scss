@@ -33,6 +33,15 @@ select {
     box-shadow: none;
   }
 
+  &.has-error {
+    box-shadow: 0 0 0 0.1em $color-orange;
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 0 0.1em $color-shadow;
+    }
+  }
+
   &::placeholder {
     color: $color-silver;
     opacity: 1;
@@ -51,6 +60,15 @@ select {
   &:hover,
   &:focus {
     box-shadow: 0 0 0 0.1em $color-mist;
+  }
+
+  &.has-error {
+    box-shadow: 0 0 0 0.1em $color-orange;
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 0 0.1em $color-mist;
+    }
   }
 
   &:disabled {
@@ -186,6 +204,18 @@ input[type=checkbox] {
 
   &:focus + label {
     box-shadow: 0 0 0 0.1em $color-shadow;
+  }
+
+  &.has-error:focus + label {
+    box-shadow: 0 0 0 0.1em $color-shadow;
+  }
+
+  &.has-error + label {
+    box-shadow: 0 0 0 0.1em $color-orange;
+
+    &:hover {
+      box-shadow: 0 0 0 0.1em $color-shadow;
+    }
   }
 
   &:disabled + label {
