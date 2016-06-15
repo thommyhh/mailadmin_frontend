@@ -10,6 +10,7 @@
 // that hint at the actual color
 
 $color-orange:   #fc3c00;
+$color-green:    #31c10e;
 $color-white:    #fff;
 $color-mist:     #ddd;
 $color-silver:   #aaa;
@@ -65,5 +66,6 @@ $break-xl-min:  $break-xl;                 // 1600px
 // Z-INDEXES
 // =====================================
 
-$z-index-dropdown: 900;
-$z-index-side-nav: 1000;
+$z-index-dropdown:     800;
+$z-index-side-nav:     900;
+$z-index-notification: 1000;

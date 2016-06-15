@@ -13,9 +13,16 @@ description: The Beginning of Everything.
   {{/embed}}
 
 
-  {{#embed "layouts/article" title="Notification"}}
+  {{#embed "layouts/article" title="Notification (success)"}}
   {{#content "body"}}
-    {{> includes/header-notification}}
+    {{> includes/header-notification-success}}
+  {{/content}}
+  {{/embed}}
+
+
+  {{#embed "layouts/article" title="Notification (error)"}}
+  {{#content "body"}}
+    {{> includes/header-notification-error}}
   {{/content}}
   {{/embed}}
 

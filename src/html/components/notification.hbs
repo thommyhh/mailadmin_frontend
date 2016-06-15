@@ -1,0 +1,24 @@
+---
+title: Notification
+description: Fire alarm, severe weather and flood warning.
+---
+
+{{#extend "layouts/components"}}
+{{#content "body"}}
+
+
+  {{#embed "layouts/article" title="Success"}}
+  {{#content "body"}}
+    {{> includes/notification-success}}
+  {{/content}}
+  {{/embed}}
+
+
+  {{#embed "layouts/article" title="Error"}}
+  {{#content "body"}}
+    {{> includes/notification-error}}
+  {{/content}}
+  {{/embed}}
+
+{{/content}}
+{{/extend}}
