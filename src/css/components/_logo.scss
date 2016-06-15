@@ -24,36 +24,42 @@
   color: $color-white;
 }
 
-  .c-logo__icon {
-    flex-shrink: 0;
+
+// Logo Icon
+
+.c-logo__icon {
+  flex-shrink: 0;
+  width: 1.2em;
+  height: 1.2em;
+
+  fill: currentColor;
+}
+
+.c-logo__icon--header {
+  width: 1em;
+  height: 1em;
+
+  @media (min-width: $break-sm-min) {
     width: 1.2em;
     height: 1.2em;
-
-    fill: currentColor;
   }
+}
 
-  .c-logo__icon--header {
-    width: 1em;
-    height: 1em;
 
-    @media (min-width: $break-sm-min) {
-      width: 1.2em;
-      height: 1.2em;
-    }
+// Logo Text
+
+.c-logo__text {
+  flex-shrink: 0;
+  margin-left: 0.4em;
+}
+
+.c-logo__text--header {
+  display: none;
+
+  @media (min-width: $break-md-min) {
+    display: block;
   }
-
-  .c-logo__text {
-    flex-shrink: 0;
-    margin-left: 0.4em;
-  }
-
-  .c-logo__text--header {
-    display: none;
-
-    @media (min-width: $break-md-min) {
-      display: block;
-    }
-  }
+}
 
 
 
@@ -61,8 +67,6 @@
 // =====================================
 
 .c-logo-kapp-hamburg {
-  font-size: 1.2em;
-
   .monochrome,
   .color {
     fill: $color-silver;
@@ -80,7 +84,10 @@
   }
 }
 
-  .c-logo-kapp-hamburg__icon {
-    display: block;
-    height: 1em;
-  }
+
+// Logo Kapp-Hamburg Icon
+
+.c-logo-kapp-hamburg__icon {
+  display: block;
+  height: 1em;
+}

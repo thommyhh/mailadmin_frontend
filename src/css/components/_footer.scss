@@ -6,18 +6,19 @@
 
 .c-footer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0.6em;
 
   background-color: $color-shadow;
 
-  // Component size
-  font-size: 1rem;
+  @media (min-width: $break-sm-min) {
+    flex-direction: row;
+  }
 
   @media (min-width: $break-md-min) {
-    height: 4em;
+    padding: 0.8em;
   }
 }
 
@@ -27,32 +28,58 @@
 // =====================================
 
 .c-footer-nav {
-  margin-left: 1.4em;
-}
+  margin-top: 0.6em;
 
-  .c-footer-nav__list {
-    display: flex;
-    margin: 0;
-    padding: 0;
+  @media (min-width: $break-sm-min) {
+    margin-top: 0;
+    margin-left: 1em;
   }
 
-    .c-footer-nav__item {
-      display: block;
-      margin-left: 0.6em;
+  @media (min-width: $break-md-min) {
+    margin-left: 1.4em;
+  }
+}
 
-      &:not(:first-child)::before {
-        content: '•';
-        margin-right: 0.6em;
-        color: $color-silver;
-      }
+
+// Footer Nav List
+
+.c-footer-nav__list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+
+// Footer Nav Item
+
+.c-footer-nav__item {
+  display: block;
+  margin-left: 0.4em;
+
+  &:not(:first-child)::before {
+    content: '•';
+    margin-right: 0.4em;
+    color: $color-silver;
+  }
+
+  @media (min-width: $break-sm-min) {
+    margin-left: 0.6em;
+
+    &::before {
+      margin-right: 0.6em;
     }
+  }
+}
 
-      .c-footer-nav__link {
-        color: $color-silver;
-        text-decoration: none;
 
-        &:hover,
-        &:focus {
-          color: lighten($color-silver, 20%);
-        }
-      }
+// Footer Nav Link
+
+.c-footer-nav__link {
+  color: $color-silver;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: lighten($color-silver, 20%);
+  }
+}
