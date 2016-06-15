@@ -1,9 +1,13 @@
 <header class="c-action-bar c-action-bar--dark">
   {{> includes/logo-header}}
 
+  <div class="c-action-bar__group c-action-bar__group--grow  js-notification-container"></div>
+
   <div class="c-action-bar__group">
     {{> includes/dropdown-form}}
+  </div>
 
+  <div class="c-action-bar__group">
     <div class="c-dropdown  js-dropdown">
       <button class="c-button c-button--icon  c-dropdown__button  js-toggle-button">
         <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#account"/></svg>
@@ -22,7 +26,9 @@
         </ul>
       </div>
     </div>
+  </div>
 
+  <div class="c-action-bar__group">
     <button class="c-button c-button--icon">
       <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#power"/></svg>
       <span class="c-button__text u-sr-only">Log off</span>

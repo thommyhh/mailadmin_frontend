@@ -37,6 +37,10 @@ select {
     color: $color-silver;
     opacity: 1;
   }
+
+  &[placeholder] {
+    text-overflow: ellipsis;
+  }
 }
 
 
