@@ -1,0 +1,17 @@
+---
+title: Navigation Sidebar
+description: Context-sensitive links for additional actions.
+---
+
+{{#extend "layouts/components"}}
+{{#content "body"}}
+
+
+  {{#embed "layouts/article"}}
+  {{#content "body"}}
+    {{> includes/nav-sidebar}}
+  {{/content}}
+  {{/embed}}
+
+{{/content}}
+{{/extend}}

@@ -1,0 +1,24 @@
+---
+title: Navigation Horizontal
+description: Contains filter or actions or a title.
+---
+
+{{#extend "layouts/components"}}
+{{#content "body"}}
+
+
+  {{#embed "layouts/article" title="Filter"}}
+  {{#content "body"}}
+    {{> includes/nav-horizontal-filter}}
+  {{/content}}
+  {{/embed}}
+
+
+  {{#embed "layouts/article" title="Title"}}
+  {{#content "body"}}
+    {{> includes/nav-horizontal-title}}
+  {{/content}}
+  {{/embed}}
+
+{{/content}}
+{{/extend}}
