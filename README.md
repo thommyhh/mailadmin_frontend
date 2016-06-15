@@ -1,4 +1,4 @@
-# Front-End Styleguide
+# MailAdmin Front-End Styleguide
 Front-end development styleguide with Sass, JavaScript and Handlebars.
 Uses the [Gulp](http://gulpjs.com/) task runner to compile [Sass](http://sass-lang.com/) files, [lint](http://jshint.com/) and concatenate JavaScript and create static HTML from [Handlebars](http://handlebarsjs.com/).
 

@@ -1,9 +1,18 @@
 ---
-title: Frontpage
+title: Login
 ---
 
 {{#extend "layouts/pages"}}
 {{#content "body"}}
-  <h1>This is the Frontpage</h1>
+
+  <div class="c-logo c-logo--dark">
+    <svg class="c-logo__icon"><use xlink:href="{{rel}}img/logo.svg#logo"/></svg>
+    <span class="c-logo__text">MailAdmin</span>
+  </div>
+
+  {{> includes/box-login}}
+
+  {{> includes/footer-login}}
+
 {{/content}}
 {{/extend}}

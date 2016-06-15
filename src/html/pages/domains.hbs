@@ -1,0 +1,24 @@
+---
+title: Domain List
+---
+
+{{#extend "layouts/pages"}}
+{{#content "body"}}
+
+  {{> includes/header-default}}
+
+  {{> includes/nav-horizontal-filter}}
+
+  <ul class="c-list">
+    {{> includes/list-domain}}
+    {{> includes/list-domain}}
+    {{> includes/list-domain-inactive}}
+    {{> includes/list-domain}}
+    {{> includes/list-domain}}
+    {{> includes/list-domain}}
+  </ul>
+
+  {{> includes/footer-logged-in}}
+
+{{/content}}
+{{/extend}}
