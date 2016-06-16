@@ -11,12 +11,7 @@
 // =====================================
 
 .c-notification-container {
-  // If placed inside a flex container
-  // the notification shall start at the top
-  // and not vertically center. Otherwise the
-  // notification may leave the viewport
-  // (and never comes back…)
-  align-self: flex-start;
+  width: 100%;
   z-index: $z-index-notification;
 
   @media (max-width: $break-md-max) {
@@ -81,6 +76,7 @@
 // =====================================
 
 .c-notification__group {
+  flex-shrink: 0;
   margin-right: 0.6rem;
 
   &:last-child {
@@ -92,8 +88,9 @@
   }
 }
 
-.c-notification__group--grow {
+.c-notification__group--flexible {
   flex-grow: 1;
+  flex-shrink: 1;
 }
 
 

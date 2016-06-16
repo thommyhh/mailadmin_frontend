@@ -39,6 +39,9 @@
   flex-shrink: 0;
   margin-right: 0.6rem;
 
+  // Fix text-overflow flexbox bug
+  min-width: 0;
+
   &:last-child {
     margin-right: 0;
   }
@@ -56,8 +59,13 @@
   flex-shrink: 1;
 }
 
-.c-action-bar__group--text-overflow {
-  min-width: 0;
+.c-action-bar__group--flexible {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.c-action-bar__group--top {
+  align-self: flex-start;
 }
 
 
