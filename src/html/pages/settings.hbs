@@ -1,5 +1,5 @@
 ---
-title: Aliases
+title: Settings
 ---
 
 {{#extend "layouts/pages"}}
@@ -17,18 +17,13 @@ title: Aliases
       </aside>
 
       <main class="l-container__main">
-        {{> includes/nav-horizontal-filter}}
+        {{> includes/nav-horizontal-title}}
 
-        <ul class="c-list">
-          {{> includes/list-alias}}
-          {{> includes/list-alias}}
-          {{> includes/list-alias-inactive}}
-          {{> includes/list-alias}}
-          {{> includes/list-alias}}
-          {{> includes/list-alias}}
-        </ul>
-
-        {{> includes/pagination}}
+        <div class="l-grid">
+          <div class="l-grid__item">{{> includes/box-form}}</div>
+          <div class="l-grid__item">{{> includes/box-login}}</div>
+          <div class="l-grid__item">{{> includes/box-text}}</div>
+        </div>
       </main>
     </div>
 

@@ -11,7 +11,9 @@
 }
 
 
-// Container Rows
+
+// CONTAINER ROW
+// =====================================
 
 .l-container__header,
 .l-container__footer {
@@ -19,28 +21,53 @@
 }
 
 .l-container__content {
+  position: relative;
   flex-grow: 1;
   overflow-y: scroll;
 }
 
 .l-container__content--flex {
   display: flex;
+  overflow-y: hidden;
 }
 
 
-// Container Items
+
+// CONTAINER ITEMS
+// More or less a Holy Grail layout
+// -- with a fix for flexbox shortcomings
+// =====================================
 
 .l-container__sidebar {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  z-index: $z-index-nav-sidebar;
+
+  &.is-visible {
+    display: block;
+  }
+
   @media (min-width: $break-lg-min) {
     display: flex;
+    position: static;
     width: 280px;
   }
 }
 
 .l-container__main {
   width: 100%;
+  overflow-y: scroll;
 
   @media (min-width: $break-lg-min) {
+    // Kinda defeats the point of flexbox
+    // but we need to set an explicit width.
+    // Otherwise child elements with white-space: nowrap
+    // may overflow the parent.
     width: calc(100% - 280px);
   }
 }

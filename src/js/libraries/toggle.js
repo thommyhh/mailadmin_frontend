@@ -6,7 +6,7 @@
 
 // Toggle Buttons
 
-function toggle(element, buttonClass = 'no-class-provided', panelClass = 'no-class-provided') {
+function toggle(element, buttonClass, panelClass) {
   element.getElementsByClassName('js-toggle-button')[0].addEventListener('click', function() {
     this.classList.toggle(buttonClass);
     element.getElementsByClassName('js-toggle-panel')[0].classList.toggle(panelClass);
@@ -16,7 +16,7 @@ function toggle(element, buttonClass = 'no-class-provided', panelClass = 'no-cla
 
 // Toggle Form Autocomplete
 
-function toggleInput(element, buttonClass = 'no-class-provided', panelClass = 'no-class-provided') {
+function toggleInput(element, buttonClass, panelClass) {
   element.getElementsByClassName('js-form-autocomplete-input')[0].addEventListener('focus', function() {
     this.classList.add(buttonClass);
     element.getElementsByClassName('js-form-autocomplete-panel')[0].classList.add(panelClass);

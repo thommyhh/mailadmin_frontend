@@ -1,0 +1,34 @@
+/* GRID
+ * Let's align all the components we once created.
+============================================================================= */
+
+
+
+.l-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0.3rem;
+
+  @media (min-width: $break-sm-min) {
+    margin: 0.5rem;
+  }
+}
+
+
+
+// GRID ITEM
+// =====================================
+
+.l-grid__item {
+  width: 100%;
+  margin: 0.3rem;
+
+  @media (min-width: $break-sm-min) {
+    margin: 0.5rem;
+  }
+}
+
+
+
+// GRID ITEM VARIANTS
+// =====================================

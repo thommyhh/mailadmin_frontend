@@ -5,11 +5,8 @@
 
 
 .c-nav-sidebar {
-  display: flex;
-  position: absolute;
   width: 100%;
-
-  z-index: $z-index-nav-sidebar;
+  height: 100%;
 
   &::before {
     content: '';
@@ -23,17 +20,20 @@
     z-index: -1;
 
     background-color: rgba(0, 0, 0, 0.8);
-  }
 
-  @media (min-width: $break-lg-min) {
-    position: relative;
+    @media (min-width: $break-lg-min) {
+      display: none;
+    }
   }
 }
 
 
-// Nav Sidebar List
+
+// NAV SIDEBAR LIST
+// =====================================
 
 .c-nav-sidebar__list {
+  height: 100%;
   margin: 0;
   padding: 0;
 
@@ -46,7 +46,9 @@
 }
 
 
-// Nav Sidebar Item
+
+// NAV SIDEBAR ITEM
+// =====================================
 
 .c-nav-sidebar__item {
   display: block;
@@ -70,7 +72,9 @@
 }
 
 
-// Nav Sidebar Link
+
+// NAV SIDEBAR LINK
+// =====================================
 
 .c-nav-sidebar__link {
   display: flex;
@@ -112,7 +116,9 @@
 }
 
 
-// Nav Sidebar Icon
+
+// NAV SIDEBAR ICON
+// =====================================
 
 .c-nav-sidebar__icon {
   width: 1em;
