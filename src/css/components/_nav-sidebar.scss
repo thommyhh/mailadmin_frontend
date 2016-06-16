@@ -6,8 +6,10 @@
 
 .c-nav-sidebar {
   display: flex;
-  position: relative;
-  height: 100%;
+  position: absolute;
+  width: 100%;
+
+  z-index: $z-index-nav-sidebar;
 
   &::before {
     content: '';
@@ -24,8 +26,7 @@
   }
 
   @media (min-width: $break-lg-min) {
-    display: inline-flex;
-    min-width: 280px;
+    position: relative;
   }
 }
 

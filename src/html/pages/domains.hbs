@@ -6,38 +6,34 @@ title: Domain List
 {{#content "body"}}
 
   <div class="l-container">
-    <div class="l-container__row">
-      <div class="l-container__item">
-        {{> includes/header-default}}
-      </div>
+    <div class="l-container__header">
+      {{> includes/header-default}}
     </div>
 
-    <div class="l-container__row l-container__row--grow">
+    <div class="l-container__content">
+      {{> includes/nav-horizontal-filter}}
 
-      <div class="l-container__item">
-        {{> includes/nav-sidebar}}
-      </div>
+      <ul class="c-list">
+        {{> includes/list-domain}}
+        {{> includes/list-domain}}
+        {{> includes/list-domain-inactive}}
+        {{> includes/list-domain}}
+        {{> includes/list-domain}}
+        {{> includes/list-domain}}
+        {{> includes/list-domain}}
+        {{> includes/list-domain}}
+        {{> includes/list-domain}}
+        {{> includes/list-domain}}
+        {{> includes/list-domain}}
+        {{> includes/list-domain}}
+        {{> includes/list-domain}}
+      </ul>
 
-      <div class="l-container__item">
-        {{> includes/nav-horizontal-filter}}
-
-        <ul class="c-list">
-          {{> includes/list-domain}}
-          {{> includes/list-domain}}
-          {{> includes/list-domain-inactive}}
-          {{> includes/list-domain}}
-          {{> includes/list-domain}}
-          {{> includes/list-domain}}
-        </ul>
-
-        {{> includes/pagination}}
-      </div>
+      {{> includes/pagination}}
     </div>
 
-    <div class="l-container__row">
-      <div class="l-container__item">
-        {{> includes/footer-logged-in}}
-      </div>
+    <div class="l-container__footer">
+      {{> includes/footer-logged-in}}
     </div>
   </div>
 

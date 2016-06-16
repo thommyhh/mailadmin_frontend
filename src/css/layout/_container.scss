@@ -1,0 +1,46 @@
+/* CONTAINER
+ * Let's align all the components we once created.
+============================================================================= */
+
+
+
+.l-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+
+// Container Rows
+
+.l-container__header,
+.l-container__footer {
+  flex-shrink: 0;
+}
+
+.l-container__content {
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+.l-container__content--flex {
+  display: flex;
+}
+
+
+// Container Items
+
+.l-container__sidebar {
+  @media (min-width: $break-lg-min) {
+    display: flex;
+    width: 280px;
+  }
+}
+
+.l-container__main {
+  width: 100%;
+
+  @media (min-width: $break-lg-min) {
+    width: calc(100% - 280px);
+  }
+}
