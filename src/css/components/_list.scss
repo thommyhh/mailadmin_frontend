@@ -64,7 +64,13 @@
   display: flex;
   align-items: center;
   min-width: 0;
-  height: 100%;
+
+  @media (min-width: $break-md-min) {
+    // Media Query is necessary to fix Safari flexbox bug
+    // where height: 100% isn't working if parent has no
+    // explicit height
+    height: 100%;
+  }
 }
 
 .c-list__group--title {
