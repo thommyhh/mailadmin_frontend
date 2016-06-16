@@ -4,14 +4,16 @@
 
 
 ;(function() {
-  var menuButton = document.getElementsByClassName('js-sidebar-button');
-  var sidebar = document.getElementsByClassName('js-sidebar')[0];
+  'use strict';
 
-  var toggleSidebar = function() {
+  let menuButton = document.getElementsByClassName('js-sidebar-button');
+  let sidebar = document.getElementsByClassName('js-sidebar')[0];
+
+  function toggleSidebar() {
     sidebar.classList.toggle('is-visible');
-  };
+  }
 
-  for (var button of menuButton) {
-    button.addEventListener('click', toggleSidebar);
+  for (let i = 0; i < menuButton.length; i++) {
+    menuButton[i].addEventListener('click', toggleSidebar);
   }
 })();

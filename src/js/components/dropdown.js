@@ -2,14 +2,16 @@
  * Click a button and an awesome menu pops up.
 ============================================================================= */
 
+/* globals toggle, toggleInput */
+
 
 ;(function() {
   'use strict';
 
-  var items = document.getElementsByClassName('js-dropdown');
+  let items = document.getElementsByClassName('js-dropdown');
 
-  for (var item of items) {
-    toggle(item, 'is-active', 'is-visible');
+  for (let i = 0; i < items.length; i++) {
+    toggle(items[i], 'is-active', 'is-visible');
   }
 })();
 
@@ -17,9 +19,9 @@
 ;(function() {
   'use strict';
 
-  var items = document.getElementsByClassName('js-form-autocomplete');
+  let items = document.getElementsByClassName('js-form-autocomplete');
 
-  for (var item of items) {
-    toggleInput(item, 'is-active', 'is-visible');
+  for (let i = 0; i < items.length; i++) {
+    toggleInput(items[i], 'is-active', 'is-visible');
   }
 })();

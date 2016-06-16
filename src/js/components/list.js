@@ -2,13 +2,15 @@
  * They list domains, accounts, forwards and aliases
 ============================================================================= */
 
+/* globals toggle */
+
 
 ;(function() {
   'use strict';
 
-  var items = document.getElementsByClassName('js-list-item');
+  let items = document.getElementsByClassName('js-list-item');
 
-  for (var item of items) {
-    toggle(item, 'is-active', 'is-visible');
+  for (let i = 0; i < items.length; i++) {
+    toggle(items[i], 'is-active', 'is-visible');
   }
 })();
