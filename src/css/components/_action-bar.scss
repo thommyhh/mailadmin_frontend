@@ -29,36 +29,49 @@
 }
 
 
-  .c-action-bar__group {
-    display: flex;
-    align-items: center;
-    margin-right: 0.6rem;
 
-    &:last-child {
-      margin-right: 0;
-    }
+// ACTION BAR GROUP
+// =====================================
 
-    @media (min-width: $break-sm-min) {
-      margin-right: 1rem;
-    }
+.c-action-bar__group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: 0.6rem;
+
+  &:last-child {
+    margin-right: 0;
   }
 
-  .c-action-bar__group--grow {
-    flex-grow: 1;
+  @media (min-width: $break-sm-min) {
+    margin-right: 1rem;
   }
+}
 
-  .c-action-bar__group--text-overflow {
-    min-width: 0;
-  }
+.c-action-bar__group--grow {
+  flex-grow: 1;
+}
+
+.c-action-bar__group--shrink {
+  flex-shrink: 1;
+}
+
+.c-action-bar__group--text-overflow {
+  min-width: 0;
+}
 
 
-    .c-action-bar__title {
-      margin: 0;
-      overflow: hidden;
 
-      font-size: 1.4em;
-      font-weight: 100;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      color: $color-shadow;
-    }
+// ACTION BAR TITLE
+// =====================================
+
+.c-action-bar__title {
+  margin: 0;
+  overflow: hidden;
+
+  font-size: 1.4em;
+  font-weight: 100;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: $color-shadow;
+}
