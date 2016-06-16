@@ -5,69 +5,82 @@
 
 
 .l-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
 }
 
 
 
-// CONTAINER ROW
+// CONTAINER FIXED
 // =====================================
 
-.l-container__header,
-.l-container__footer {
-  flex-shrink: 0;
-}
-
-.l-container__content {
-  position: relative;
-  flex-grow: 1;
-  overflow-y: scroll;
-}
-
-.l-container__content--flex {
-  display: flex;
-  overflow-y: hidden;
-}
-
-
-
-// CONTAINER ITEMS
-// More or less a Holy Grail layout
-// -- with a fix for flexbox shortcomings
-// =====================================
-
-.l-container__sidebar {
-  display: none;
-  position: absolute;
+.l-container__header {
   top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-index-header;
+
+  @media (min-width: $break-md-min) {
+    position: fixed;
+  }
+}
+
+.l-container__footer {
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: $z-index-footer;
 
+  @media (min-width: $break-md-min) {
+    position: fixed;
+  }
+}
+
+.l-container__sidebar {
+  position: fixed;
+  display: none;
+  top: 3.7rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: $z-index-nav-sidebar;
 
   &.is-visible {
     display: block;
   }
 
+  @media (min-width: $break-sm-min) {
+    top: 4.5rem;
+  }
+
+  @media (min-width: $break-md-min) {
+    top: 4rem;
+  }
+
   @media (min-width: $break-lg-min) {
-    display: flex;
-    position: static;
+    display: block;
     width: 280px;
   }
 }
 
-.l-container__main {
-  width: 100%;
-  overflow-y: scroll;
 
+
+// Some other stuff
+// =====================================
+
+.l-container__content {
+  @media (min-width: $break-md-min) {
+    height: 100vh;
+    padding-top: 4rem;
+  }
+}
+
+.l-container__main {
+  @media (min-width: $break-md-min) {
+    padding-bottom: 2rem;
+  }
+}
+
+.l-container__main--sidebar {
   @media (min-width: $break-lg-min) {
-    // Kinda defeats the point of flexbox
-    // but we need to set an explicit width.
-    // Otherwise child elements with white-space: nowrap
-    // may overflow the parent.
-    width: calc(100% - 280px);
+    margin-left: 280px;
   }
 }
