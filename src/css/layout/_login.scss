@@ -4,8 +4,8 @@
 
 
 
-.l-login {
-}
+// LOGIN LOGO
+// =====================================
 
 .l-login__logo {
   margin: 1rem;
@@ -15,11 +15,21 @@
   }
 }
 
+
+
+// LOGIN FORM
+// =====================================
+
 .l-login__form {
   max-width: 25rem;
   margin: 0 auto;
   margin-bottom: 4rem;
 }
+
+
+
+// LOGIN FOOTER
+// =====================================
 
 .l-login__footer {
   @media (min-width: $break-md-min) {
