@@ -10,38 +10,48 @@
   height: 100%;
 }
 
-  .c-box__title {
-    margin: 0;
-    padding: 0.6rem;
 
-    font-size: 1.3em;
-    font-weight: 300;
-    color: $color-white;
 
-    background-color: $color-shadow;
+// BOX TITLE
+// =====================================
 
-    @media (min-width: $break-sm-min) {
-      padding: 1rem;
-    }
+.c-box__title {
+  margin: 0;
+  padding: 0.6rem;
+
+  font-size: 1.3em;
+  font-weight: 300;
+  color: $color-white;
+
+  background-color: $color-shadow;
+
+  @media (min-width: $break-sm-min) {
+    padding: 1rem;
+  }
+}
+
+
+
+// BOX CONTENT
+// =====================================
+
+.c-box__content {
+  flex-grow: 1;
+  margin: 0;
+  padding: 0.6rem;
+
+  font-size: 1em;
+  color: $color-charcoal;
+
+  background-color: $color-mist;
+
+  @media (min-width: $break-sm-min) {
+    padding: 1rem;
   }
 
-  .c-box__content {
-    flex-grow: 1;
-    margin: 0;
-    padding: 0.6rem;
-
-    font-size: 1em;
-    color: $color-charcoal;
-
-    background-color: $color-mist;
-
-    @media (min-width: $break-sm-min) {
-      padding: 1rem;
-    }
-
-    // Remove bottom margin from last element
-    // We already have a global box padding
-    > :last-child {
-      margin-bottom: 0;
-    }
+  // Remove bottom margin from last element
+  // We already have a global box padding
+  > :last-child {
+    margin-bottom: 0;
   }
+}
