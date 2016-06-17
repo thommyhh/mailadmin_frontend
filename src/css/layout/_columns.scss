@@ -18,6 +18,10 @@
   @media (min-width: $break-md-min) {
     column-count: 3;
   }
+
+  @media (min-width: $break-xxl-min) {
+    column-count: 4;
+  }
 }
 
 
