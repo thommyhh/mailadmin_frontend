@@ -37,6 +37,8 @@
   margin: 0;
   padding: 0;
 
+  overflow-y: auto;
+
   background-color: $color-mist;
 
   @media (min-width: $break-sm-min) {
@@ -46,6 +48,7 @@
   @media (min-width: $break-md-min) {
     display: inline-block;
     width: auto;
+    padding-bottom: 2em;
   }
 
   @media (min-width: $break-lg-min) {
