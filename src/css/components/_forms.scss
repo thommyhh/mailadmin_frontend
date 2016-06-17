@@ -25,7 +25,7 @@ select {
 
   &:hover,
   &:focus {
-    box-shadow: 0 0 0 0.1em $color-shadow;
+    box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.6);
   }
 
   &:disabled {
@@ -38,7 +38,7 @@ select {
 
     &:hover,
     &:focus {
-      box-shadow: 0 0 0 0.1em $color-shadow;
+      box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.6);
     }
   }
 
@@ -59,7 +59,7 @@ select {
 
   &:hover,
   &:focus {
-    box-shadow: 0 0 0 0.1em $color-mist;
+    box-shadow: 0 0 0 0.1em rgba(255, 255, 255, 0.85);
   }
 
   &.has-error {
@@ -67,7 +67,7 @@ select {
 
     &:hover,
     &:focus {
-      box-shadow: 0 0 0 0.1em $color-mist;
+      box-shadow: 0 0 0 0.1em rgba(255, 255, 255, 0.85);
     }
   }
 
@@ -184,8 +184,11 @@ input[type=checkbox] {
     align-items: center;
     min-height: 2.5em;
     margin-bottom: 0.5em;
-    padding-left: 1.4em;
-    padding-right: 0.1em;
+    padding: 0 0.1em 0 1.4em;
+
+    font-size: 1em;
+    text-transform: none;
+    letter-spacing: 0;
 
     background-position: left center;
     background-size: 1em;
@@ -194,7 +197,7 @@ input[type=checkbox] {
     border-radius: 0.2em;
 
     &:hover {
-      box-shadow: 0 0 0 0.1em $color-shadow;
+      box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.6);
     }
 
     @media (min-width: $break-md-min) {
@@ -203,18 +206,18 @@ input[type=checkbox] {
   }
 
   &:focus + label {
-    box-shadow: 0 0 0 0.1em $color-shadow;
+    box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.6);
   }
 
   &.has-error:focus + label {
-    box-shadow: 0 0 0 0.1em $color-shadow;
+    box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.6);
   }
 
   &.has-error + label {
     box-shadow: 0 0 0 0.1em $color-orange;
 
     &:hover {
-      box-shadow: 0 0 0 0.1em $color-shadow;
+      box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.6);
     }
   }
 
@@ -229,12 +232,12 @@ input[type=checkbox] {
     color: $color-white;
 
     &:hover {
-      box-shadow: 0 0 0 0.1em $color-mist;
+      box-shadow: 0 0 0 0.1em rgba(255, 255, 255, 0.85);
     }
   }
 
   &.c-input--dark:focus + label {
-    box-shadow: 0 0 0 0.1em $color-mist;
+    box-shadow: 0 0 0 0.1em rgba(255, 255, 255, 0.85);
   }
 
   &.c-input--dark:disabled + label {
@@ -328,8 +331,37 @@ input[type=checkbox] {
 // =====================================
 
 label {
+  display: block;
+  padding-bottom: 0.2em;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   color: $color-shadow;
+
   cursor: pointer;
+
+  @media (min-width: $break-md-min) {
+    font-size: 0.8em;
+  }
+
+  &.c-label--dark {
+    color: $color-mist;
+  }
+}
+
+.c-label--error {
+  margin: 0;
+  padding: 0.4em 1em;
+
+  color: $color-white;
+
+  background-color: $color-orange;
+  box-shadow: 0 0 0 0.1em $color-orange;
+  border-radius: 0.2em 0.2em 0 0;
+
+  @media (min-width: $break-md-min) {
+    padding: 0.4em 0.6em;
+  }
 }
 
 

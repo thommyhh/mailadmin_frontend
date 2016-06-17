@@ -8,10 +8,21 @@ description: Users input things. The server gets things.
 
   {{#embed "layouts/article" title="Text Inputs" body-class="light"}}
   {{#content "body"}}
+    <label for="text">Text input</label>
+    <input type="text" id="text" placeholder="Text">
+
     <label for="text" class="u-sr-only">Text input</label>
     <input type="text" id="text" placeholder="Text">
 
     <label for="text" class="u-sr-only">Text input (error)</label>
+    <input type="text" id="text" placeholder="Text (error)" class="has-error">
+
+    <label for="text">Text input (error)</label>
+    <p class="c-label--error">This input field has some sort of error. Fix it!</p>
+    <input type="text" id="text" placeholder="Text (error)" class="has-error">
+
+    <label for="text" class="u-sr-only">Text input (error)</label>
+    <p class="c-label--error">This input field has some sort of error. Fix it!</p>
     <input type="text" id="text" placeholder="Text (error)" class="has-error">
 
     <label for="text-disabled" class="u-sr-only">Text input (disabled)</label>
@@ -37,28 +48,35 @@ description: Users input things. The server gets things.
 
   {{#embed "layouts/article" title="Text Inputs (dark)" body-class="dark"}}
   {{#content "body"}}
-    <label for="text" class="u-sr-only">Text input</label>
+    <label for="text" class="c-label--dark">Text input</label>
     <input type="text" id="text" placeholder="Text" class="c-input--dark">
 
-    <label for="text" class="u-sr-only">Text input (error)</label>
+    <label for="text" class="c-label--dark u-sr-only">Text input</label>
+    <input type="text" id="text" placeholder="Text" class="c-input--dark">
+
+    <label for="text" class="c-label--dark u-sr-only">Text input (error)</label>
     <input type="text" id="text" placeholder="Text (error)" class="c-input--dark has-error">
 
-    <label for="text-disabled" class="u-sr-only">Text input (disabled)</label>
+    <label for="text" class="c-label--dark u-sr-only">Text input (error)</label>
+    <p class="c-label--error">This input field has some sort of error. Fix it!</p>
+    <input type="text" id="text" placeholder="Text (error)" class="c-input--dark has-error">
+
+    <label for="text-disabled" class="c-label--dark u-sr-only">Text input (disabled)</label>
     <input type="text" id="text-disabled" placeholder="Text (disabled)" class="c-input--dark" disabled>
 
-    <label for="email" class="u-sr-only">E-mail input</label>
+    <label for="email" class="c-label--dark u-sr-only">E-mail input</label>
     <input type="email" id="email" placeholder="E-mail" class="c-input--dark">
 
-    <label for="password" class="u-sr-only">Password input</label>
+    <label for="password" class="c-label--dark u-sr-only">Password input</label>
     <input type="password" id="password" placeholder="Password" class="c-input--dark">
 
-    <label for="search" class="u-sr-only">Search input</label>
+    <label for="search" class="c-label--dark u-sr-only">Search input</label>
     <input type="search" id="search" placeholder="Search" class="c-input--dark c-input--icon-search">
 
-    <label for="url" class="u-sr-only">URL input</label>
+    <label for="url" class="c-label--dark u-sr-only">URL input</label>
     <input type="url" id="url" placeholder="URL" class="c-input--dark">
 
-    <label for="number" class="u-sr-only">Number input</label>
+    <label for="number" class="c-label--dark u-sr-only">Number input</label>
     <input type="number" id="number" placeholder="7" class="c-input--dark">
   {{/content}}
   {{/embed}}
@@ -66,10 +84,17 @@ description: Users input things. The server gets things.
 
   {{#embed "layouts/article" title="Textarea" body-class="light"}}
   {{#content "body"}}
+    <label for="textarea">Textarea</label>
+    <textarea id="textarea" placeholder="Textarea" rows="5"></textarea>
+
     <label for="textarea" class="u-sr-only">Textarea</label>
     <textarea id="textarea" placeholder="Textarea" rows="5"></textarea>
 
     <label for="textarea" class="u-sr-only">Textarea (error)</label>
+    <textarea id="textarea" placeholder="Textarea (error)" rows="5" class="has-error"></textarea>
+
+    <label for="textarea" class="u-sr-only">Textarea (error)</label>
+    <p class="c-label--error">This input field has some sort of error. Fix it!</p>
     <textarea id="textarea" placeholder="Textarea (error)" rows="5" class="has-error"></textarea>
 
     <label for="textarea-disabled" class="u-sr-only">Textarea (disabled)</label>
@@ -80,13 +105,20 @@ description: Users input things. The server gets things.
 
   {{#embed "layouts/article" title="Textarea (dark)" body-class="dark"}}
   {{#content "body"}}
-    <label for="textarea" class="u-sr-only">Textarea</label>
+    <label for="textarea" class="c-label--dark">Textarea</label>
     <textarea id="textarea" placeholder="Textarea" rows="5" class="c-input--dark"></textarea>
 
-    <label for="textarea" class="u-sr-only">Textarea (error)</label>
+    <label for="textarea" class="c-label--dark u-sr-only">Textarea</label>
+    <textarea id="textarea" placeholder="Textarea" rows="5" class="c-input--dark"></textarea>
+
+    <label for="textarea" class="c-label--dark u-sr-only">Textarea (error)</label>
     <textarea id="textarea" placeholder="Textarea (error)" rows="5" class="c-input--dark has-error"></textarea>
 
-    <label for="textarea-disabled" class="u-sr-only">Textarea (disabled)</label>
+    <label for="textarea" class="c-label--dark u-sr-only">Textarea (error)</label>
+    <p class="c-label--error">This input field has some sort of error. Fix it!</p>
+    <textarea id="textarea" placeholder="Textarea (error)" rows="5" class="c-input--dark has-error"></textarea>
+
+    <label for="textarea-disabled" class="c-label--dark u-sr-only">Textarea (disabled)</label>
     <textarea id="textarea-disabled" placeholder="Textarea (disabled)" rows="5" class="c-input--dark" disabled></textarea>
   {{/content}}
   {{/embed}}
