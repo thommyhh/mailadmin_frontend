@@ -6,23 +6,21 @@
 
 .c-nav-sidebar {
   height: 100%;
+}
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+.c-nav-sidebar__cover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
-    // Push behind parent
-    z-index: -1;
+  z-index: 1;
 
-    background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
 
-    @media (min-width: $break-lg-min) {
-      display: none;
-    }
+  @media (min-width: $break-lg-min) {
+    display: none;
   }
 }
 
@@ -32,10 +30,13 @@
 // =====================================
 
 .c-nav-sidebar__list {
+  position: relative;
   width: 75%;
   height: 100%;
   margin: 0;
   padding: 0;
+
+  z-index: 2;
 
   overflow-y: auto;
 
