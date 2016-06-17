@@ -9,16 +9,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0.6em;
+  padding: 0.8em 0.6rem;
 
   background-color: $color-shadow;
 
   @media (min-width: $break-sm-min) {
     flex-direction: row;
+    height: 2.4rem;
   }
 
   @media (min-width: $break-md-min) {
-    padding: 0.8em;
+    height: 2rem;
+    padding: 0 1rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -28,7 +31,7 @@
 // =====================================
 
 .c-footer-nav {
-  margin-top: 0.6em;
+  margin-top: 0.8em;
 
   @media (min-width: $break-sm-min) {
     margin-top: 0;
