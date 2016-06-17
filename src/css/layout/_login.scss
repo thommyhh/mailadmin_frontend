@@ -1,0 +1,31 @@
+/* LOGIN
+ * Let's align all the components we once created.
+============================================================================= */
+
+
+
+.l-login {
+}
+
+.l-login__logo {
+  margin: 1rem;
+
+  @media (min-width: $break-sm-min) {
+    margin: 2rem;
+  }
+}
+
+.l-login__form {
+  max-width: 25rem;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+}
+
+.l-login__footer {
+  @media (min-width: $break-md-min) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
