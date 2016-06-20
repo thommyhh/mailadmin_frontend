@@ -73,4 +73,9 @@
 .c-pagination__items-per-page {
   width: auto;
   margin: 0 0 0.5rem;
+
+  &:hover,
+  &:focus {
+    background-color: darken($color-shadow, 15%);
+  }
 }
