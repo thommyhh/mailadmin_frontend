@@ -31,28 +31,35 @@
 
 .l-container__sidebar {
   position: fixed;
-  display: none;
-  top: 3.7rem;
+  width: 75%;
+  top: 3.7rem; // Magic number for header height
   bottom: 0;
   left: 0;
   right: 0;
+  transform: translateX(-100%);
+
   z-index: $z-index-nav-sidebar;
 
+  transition: transform 0.2s;
+  will-change: transform;
+
   &.is-visible {
-    display: block;
+    transform: translateX(0);
   }
 
   @media (min-width: $break-sm-min) {
-    top: 4.5rem;
+    width: 60%;
+    top: 4.5rem; // Magic number for header height
   }
 
   @media (min-width: $break-md-min) {
-    top: 4rem;
+    width: 50%;
+    top: 4rem; // Magic number vor header height
   }
 
   @media (min-width: $break-lg-min) {
-    display: block;
     width: 280px;
+    transform: none;
   }
 }
 
