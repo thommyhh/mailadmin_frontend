@@ -111,8 +111,6 @@
 }
 
 .c-dropdown__panel--menu {
-  background-color: darken($color-shadow, 15%);
-
   @media (min-width: $break-sm-min) {
     white-space: nowrap;
   }

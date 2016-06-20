@@ -196,10 +196,6 @@ input[type=checkbox] {
 
     border-radius: 0.2em;
 
-    &:hover {
-      box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.6);
-    }
-
     @media (min-width: $break-md-min) {
       min-height: 2em;
     }
@@ -215,10 +211,6 @@ input[type=checkbox] {
 
   &.has-error + label {
     box-shadow: 0 0 0 0.1em $color-orange;
-
-    &:hover {
-      box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.6);
-    }
   }
 
   &:disabled + label {
@@ -230,10 +222,6 @@ input[type=checkbox] {
 
   &.c-input--dark + label {
     color: $color-white;
-
-    &:hover {
-      box-shadow: 0 0 0 0.1em rgba(255, 255, 255, 0.85);
-    }
   }
 
   &.c-input--dark:focus + label {
