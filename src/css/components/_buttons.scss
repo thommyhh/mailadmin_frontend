@@ -11,7 +11,7 @@
   display: inline-block;
   position: relative;
   height: 2.5em;
-  padding: 0.71em 1em; // Vertical padding for links
+  padding: 0.71em 1em; // Magic number for vertically centered a text
   vertical-align: middle;
   white-space: nowrap;
 
@@ -41,7 +41,7 @@
 
   @media (min-width: $break-md-min) {
     height: 2.2222222222em;
-    padding: 0.58em 0.8em; // Vertical padding for links
+    padding: 0.57em 0.8em; // Magic number for vertically centered a text
 
     font-size: 0.9em;
   }
