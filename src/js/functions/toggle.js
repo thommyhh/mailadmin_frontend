@@ -10,7 +10,7 @@
 
 function toggle(element, buttonClass, panelClass) {
   if (!element) {
-    throw new Error('Element missing.')
+    throw new Error('Element missing.');
   }
 
   if (!buttonClass) {
@@ -33,7 +33,7 @@ function toggle(element, buttonClass, panelClass) {
 
 function toggleInput(element, buttonClass, panelClass) {
   if (!element) {
-    throw new Error('Element missing.')
+    throw new Error('Element missing.');
   }
 
   if (!buttonClass) {
