@@ -6,7 +6,7 @@ description: They list domains, accounts, aliases, forwards and mailing lists.
 {{#extend "layouts/components"}}
 {{#content "body"}}
 
-  {{#embed "layouts/article" title="Domain"}}
+  {{#embed "styleguide/article" title="Domain"}}
   {{#content "body"}}
     <ul class="c-list">
       {{> includes/list-domain}}
@@ -20,7 +20,7 @@ description: They list domains, accounts, aliases, forwards and mailing lists.
   {{/embed}}
 
 
-  {{#embed "layouts/article" title="Alias"}}
+  {{#embed "styleguide/article" title="Alias"}}
   {{#content "body"}}
     <ul class="c-list">
       {{> includes/list-alias}}
@@ -34,7 +34,7 @@ description: They list domains, accounts, aliases, forwards and mailing lists.
   {{/embed}}
 
 
-  {{#embed "layouts/article" title="Forward"}}
+  {{#embed "styleguide/article" title="Forward"}}
   {{#content "body"}}
     <ul class="c-list">
       {{> includes/list-forward-inactive}}
