@@ -1,27 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html{{#if meta.lang}} lang="{{meta.lang}}"{{/if}}>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{@file.meta.title}}</title>
+    {{#if (page "description")~}}<meta name="description" content="{{page 'description'}}">{{/if}}
+    {{#if (page "title")}}<title>{{page "title"}}</title>{{/if}}
 
     <!-- CSS -->
-  {{#if displayNav}}
-    <link rel="stylesheet" href="{{rel}}css/sg.css">
-  {{/if}}
-    <link rel="stylesheet" href="{{rel}}css/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    {{#if meta.dev}}<link rel="stylesheet" href="{{page 'rel'}}css/sg.css?v={{meta.version}}">{{/if}}
+    <link rel="stylesheet" href="{{page 'rel'}}css/styles.css?v={{meta.version}}">
   </head>
   <body>
 
-  {{#if displayNav}}
-    <!-- Styleguide Nav -->
-    {{> "styleguide/nav"}}
-  {{/if}}
+    {{#if meta.dev}}{{> "styleguide/nav"}}{{/if}}
 
     {{{block "body"}}}
 
     <!-- JS -->
-    <script src="{{rel}}js/scripts.js"></script>
+    {{#if meta.dev}}<script src="{{page 'rel'}}js/sg.js?v={{meta.version}}"></script>{{/if}}
+    <script src="{{page 'rel'}}js/svgxuse.js?v={{meta.version}}"></script>
+    <script src="{{page 'rel'}}js/scripts.js?v={{meta.version}}"></script>
   </body>
 </html>

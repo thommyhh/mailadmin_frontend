@@ -1,22 +1,22 @@
-<li class="c-list__item  is-inactive  js-list-item">
+<li class="c-list__item is-inactive js-list-item">
   <div class="c-list__group c-list__group--title">
     <a href="#" class="c-list__link">
       <h3 class="c-list__title c-list__title--multiline">
         <span>test-account@domain-example.hamburg</span>
         <span>
-          <svg class="c-list__icon"><use xlink:href="{{rel}}img/icons.svg#forward"/></svg>
+          <svg class="c-list__icon"><use xlink:href="{{page 'rel'}}img/icons.svg#forward"/></svg>
           random.account@example-domain-name.com
         </span>
       </h3>
     </a>
 
-    <button class="c-icon-button c-icon-button--active-rotate  c-list__toggle-button  js-toggle-button">
-      <svg class="c-icon-button__icon"><use xlink:href="{{rel}}img/icons.svg#dropdown"/></svg>
+    <button class="c-icon-button c-icon-button--active-rotate c-list__toggle-button js-toggle-button">
+      <svg class="c-icon-button__icon"><use xlink:href="{{page 'rel'}}img/icons.svg#dropdown"/></svg>
       <span class="u-sr-only">Show Actions</span>
     </button>
   </div>
 
-  <div class="c-list__group c-list__group--actions  js-toggle-panel">
+  <div class="c-list__group c-list__group--actions js-toggle-panel">
     <div class="c-list__action-group">
       <input type="checkbox" id="inactive">
       <label for="inactive">Aktiv</label>
@@ -24,12 +24,12 @@
 
     <div class="c-list__action-group">
       <button class="c-button c-button--icon">
-        <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#settings"/></svg>
+        <svg class="c-button__icon"><use xlink:href="{{page 'rel'}}img/icons.svg#settings"/></svg>
         <span class="c-button__text u-sr-only-md">Settings</span>
       </button>
 
       <button class="c-button c-button--icon">
-        <svg class="c-button__icon"><use xlink:href="{{rel}}img/icons.svg#delete"/></svg>
+        <svg class="c-button__icon"><use xlink:href="{{page 'rel'}}img/icons.svg#delete"/></svg>
         <span class="c-button__text u-sr-only-md">Delete</span>
       </button>
     </div>

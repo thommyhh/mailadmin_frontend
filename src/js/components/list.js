@@ -5,7 +5,7 @@
 /* globals toggle */
 
 
-;(function() {
+(function() {
   'use strict';
 
   let items = document.getElementsByClassName('js-list-item');

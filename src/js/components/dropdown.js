@@ -5,7 +5,7 @@
 /* globals toggle, toggleInput */
 
 
-;(function() {
+(function() {
   'use strict';
 
   let items = document.getElementsByClassName('js-dropdown');
@@ -16,7 +16,7 @@
 })();
 
 
-;(function() {
+(function() {
   'use strict';
 
   let items = document.getElementsByClassName('js-form-autocomplete');

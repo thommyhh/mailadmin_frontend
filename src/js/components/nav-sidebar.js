@@ -3,7 +3,7 @@
 ============================================================================= */
 
 
-;(function() {
+(function() {
   'use strict';
 
   let button  = document.getElementsByClassName('js-sidebar-button');

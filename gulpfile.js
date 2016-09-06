@@ -2,159 +2,48 @@
 
 
 
-
-/* NODE MODULES
+/* MODULES
  * ========================================================================== */
 
 
 // Base
-var fs           = require('fs');
-var glob         = require('glob');
-var del          = require('del');
-var path         = require('path');
+const fs           = require('fs');
+const glob         = require('glob');
+const del          = require('del');
+const path         = require('path');
+const browsersync  = require('browser-sync');
 
 // Gulp
-var gulp         = require('gulp');
+const gulp         = require('gulp');
 
 // Utilities
-var gutil        = require('gulp-util');
-var filter       = require('gulp-filter');
-var rename       = require('gulp-rename');
-var concat       = require('gulp-concat');
-var runSequence  = require('run-sequence');
+const gutil        = require('gulp-util');
+const rename       = require('gulp-rename');
+const concat       = require('gulp-concat');
+const runSequence  = require('run-sequence');
 
 // CSS/Sass
-var sass         = require('gulp-sass');
-var sourcemaps   = require('gulp-sourcemaps');
-var autoprefixer = require('gulp-autoprefixer');
+const sass         = require('gulp-sass');
+const sourcemaps   = require('gulp-sourcemaps');
+const autoprefixer = require('gulp-autoprefixer');
 
 // JavaScript
-var babel        = require('gulp-babel');
-var uglify       = require('gulp-uglify');
-var jshint       = require('gulp-jshint');
-var stylish      = require('jshint-stylish');
+const babel        = require('gulp-babel');
+const uglify       = require('gulp-uglify');
+const eslint       = require('gulp-eslint');
 
 // Handelbars
-var hb           = require('gulp-hb');
-var fm           = require('front-matter');
-var gulpFm       = require('gulp-front-matter');
+const hb           = require('gulp-hb');
+const fm           = require('front-matter');
+const gulpFm       = require('gulp-front-matter');
 
 // Images
-var imagemin     = require('gulp-imagemin');
+const svgSprite    = require('gulp-svg-sprite');
+const imagemin     = require('gulp-imagemin');
 
-// Browsersync
-var browsersync  = require('browser-sync');
-
-
-
-
-/* PATHS & CONFIGURATION
- * ========================================================================== */
-
-
-// Base folders
-var basePaths = {
-  src:  'src/',
-  dev:  'dev/',
-  dist: 'dist/'
-}
-
-
-// Task specific folders
-var paths = {
-  // CSS
-  css: {
-    src:        basePaths.src  + 'css/',
-    dev:        basePaths.dev  + 'css/',
-    dist:       basePaths.dist + 'css/'
-  },
-
-  // JavaScript
-  js: {
-    src:        basePaths.src  + 'js/',
-    dev:        basePaths.dev  + 'js/',
-    dist:       basePaths.dist + 'js/'
-  },
-
-  // HTML
-  html: {
-    src:        basePaths.src  + 'html/',
-    pages:      basePaths.src  + 'html/pages/',
-    components: basePaths.src  + 'html/components/',
-    partials:   basePaths.src  + 'html/partials/**/*.hbs',
-    css:        basePaths.src  + 'html/css/',
-    dev:        basePaths.dev,
-    dist:       basePaths.dist
-  },
-
-  // Images
-  img: {
-    src:        basePaths.src  + 'img/',
-    dev:        basePaths.dev  + 'img/',
-    dist:       basePaths.dist + 'img/'
-  }
-}
-
-
-// Config
-var config = {
-  // CSS
-  css: {
-    dev: {
-      outputStyle: 'expanded'
-    },
-    dist: {
-      outputStyle: 'compressed'
-    },
-    autoprefixer: {
-      browsers: ['last 2 versions']
-    }
-  },
-
-  // JavaScript
-  js: {
-    babel: {
-      presets: ['es2015']
-    }
-  },
-
-  // HTML
-  html: {
-    hb: {
-      bustCache: true
-    },
-    browsersync: {
-      server: {
-        baseDir: paths.html.dev
-      },
-      logPrefix: 'Browsersync',
-      scrollElements: ['*'],
-      reloadDelay: 300,
-      notify: {
-        styles: {
-          height: '40px',
-          right: '40px',
-          padding: '11px 16px',
-          fontSize: '16px',
-          fontWeight: '100',
-          textTransform: 'uppercase',
-          backgroundColor: 'rgb(47, 151, 255)',
-          borderBottomLeftRadius: 'none'
-        }
-      }
-    }
-  },
-
-  // Images
-  img: {
-    imagemin: [
-      imagemin.gifsicle({interlaced: true}),
-      imagemin.jpegtran({progressive: true}),
-      imagemin.optipng({optimizationLevel: 5}),
-      imagemin.svgo({plugins: [{removeUselessDefs: false}]})
-    ]
-  }
-}
+// Paths & Config
+const paths        = require('./gulp/paths.js');
+const config       = require('./gulp/config.json');
 
 
 
@@ -165,26 +54,32 @@ var config = {
 
 
 // Clean Development
-gulp.task('clean-dev', function() {
-  return del(basePaths.dev);
+gulp.task('clean-dev', () => {
+  return del(paths.dev);
+});
+
+
+// Clean Preview
+gulp.task('clean-prev', () => {
+  return del(paths.prev);
 });
 
 
 // Clean Distribution
-gulp.task('clean-dist', function() {
-  return del(basePaths.dist);
+gulp.task('clean-dist', () => {
+  return del(paths.dist);
 });
 
 
 // Clean Dev HTML
-gulp.task('clean-html-dev', function() {
-  return del(paths.html.dev + '**/*.html');
+gulp.task('clean-html-dev', () => {
+  return del([`${paths.html.dev}/**/*.html`, `!${paths.html.dev}/img/icons.html`]);
 });
 
 
 // Clean Dev Images
-gulp.task('clean-img-dev', function() {
-  return del(paths.img.dev + '**');
+gulp.task('clean-img-dev', () => {
+  return del(`${paths.img.dev}/**`);
 });
 
 
@@ -196,8 +91,8 @@ gulp.task('clean-img-dev', function() {
 
 
 // CSS Development
-gulp.task('css-dev', function() {
-  return gulp.src(paths.css.src + '**/*.scss')
+gulp.task('css-dev', () => {
+  return gulp.src(`${paths.css.src}/**/*.scss`)
     .pipe(sourcemaps.init())
       .pipe(sass(config.css.dev).on('error', sass.logError))
       .pipe(autoprefixer(config.css.autoprefixer))
@@ -213,17 +108,26 @@ gulp.task('css-watch', ['css-dev']);
 
 
 // CSS Styleguide
-gulp.task('css-sg', function() {
-  return gulp.src(paths.html.css + 'sg.scss')
+gulp.task('css-sg', () => {
+  return gulp.src(`${paths.html.src}/css/sg.scss`)
     .pipe(sass(config.css.dev).on('error', sass.logError))
     .pipe(autoprefixer(config.css.autoprefixer))
     .pipe(gulp.dest(paths.css.dev));
 });
 
 
-// CSS Distribution
-gulp.task('css-dist', ['clean-dist'], function() {
-  return gulp.src(paths.css.src + '**/*.scss')
+// CSS Preview
+gulp.task('css-prev', () => {
+  return gulp.src(`${paths.css.src}/**/*.scss`)
+    .pipe(sass(config.css.dist).on('error', sass.logError))
+    .pipe(autoprefixer(config.css.autoprefixer))
+    .pipe(rename('styles.css'))
+    .pipe(gulp.dest(paths.css.prev));
+});
+
+// CSS Production
+gulp.task('css-dist', () => {
+  return gulp.src(`${paths.css.src}/**/*.scss`)
     .pipe(sass(config.css.dist).on('error', sass.logError))
     .pipe(autoprefixer(config.css.autoprefixer))
     .pipe(rename('styles.css'))
@@ -239,7 +143,7 @@ gulp.task('css-dist', ['clean-dist'], function() {
 
 
 // Handle Bable error
-var babelError = function(error) {
+let babelError = function(error) {
   console.log(
     '\n' + gutil.colors.underline(error.fileName) + '\n'
     + gutil.colors.gray('  line ' + error.loc.line + '  col ' + error.loc.column)
@@ -251,23 +155,26 @@ var babelError = function(error) {
 };
 
 
-// JavaScript Hint
-gulp.task('js-hint', function() {
-  return gulp.src([paths.js.src + 'functions/**/*.js', paths.js.src + 'components/**/*.js'])
-    .pipe(jshint())
-    .pipe(jshint.reporter(stylish));
+// JavaScript Lint
+gulp.task('js-lint', () => {
+  return gulp.src([
+    `${paths.js.src}/functions/**/*.js`,
+    `${paths.js.src}/components/**/*.js`
+  ])
+    .pipe(eslint(config.js.eslint))
+    .pipe(eslint.format());
 });
 
 
-// JavaScript Concatenation
-gulp.task('js-process', function() {
-  var excludeLibraries = filter([paths.js.src + 'functions/**/*.js', paths.js.src + 'components/**/*.js'], {restore: true});
-
-  return gulp.src([paths.js.src + 'libraries/**/*.js', paths.js.src + 'functions/**/*.js', paths.js.src + 'components/**/*.js'])
+// JavaScript Dev
+gulp.task('js-dev', ['js-lint'], () => {
+  return gulp.src([
+    `${paths.js.src}/libraries/**/*.js`,
+    `${paths.js.src}/functions/**/*.js`,
+    `${paths.js.src}/components/**/*.js`
+  ])
     .pipe(sourcemaps.init())
-      .pipe(excludeLibraries)
-        .pipe(babel(config.js.babel).on('error', babelError))
-      .pipe(excludeLibraries.restore)
+      .pipe(babel(config.js.babel).on('error', babelError))
       .pipe(concat('scripts.js'))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(paths.js.dev))
@@ -275,22 +182,42 @@ gulp.task('js-process', function() {
 });
 
 
-// JavaScript Development
-gulp.task('js-dev', ['js-hint', 'js-process']);
-
-
 // JavaScript Watch
 gulp.task('js-watch', ['js-dev']);
 
 
-// JavaScript Production
-gulp.task('js-dist', ['clean-dist'], function() {
-  var excludeLibraries = filter([paths.js.src + 'functions/**/*.js', paths.js.src + 'components/**/*.js'], {restore: true});
+// JavaScript Styleguide
+gulp.task('js-sg', () => {
+  return gulp.src(`${paths.html.src}/js/sg.js`)
+    .pipe(eslint(config.js.eslint))
+    .pipe(eslint.format())
+    .pipe(babel(config.js.babel).on('error', babelError))
+    .pipe(gulp.dest(paths.js.dev));
+});
 
-  return gulp.src([paths.js.src + 'libraries/**/*.js', paths.js.src + 'functions/**/*.js', paths.js.src + 'components/**/*.js'])
-    .pipe(excludeLibraries)
-      .pipe(babel(config.js.babel))
-    .pipe(excludeLibraries.restore)
+
+// JavaScript Preview
+gulp.task('js-prev', () => {
+  return gulp.src([
+    `${paths.js.src}/libraries/**/*.js`,
+    `${paths.js.src}/functions/**/*.js`,
+    `${paths.js.src}/components/**/*.js`
+  ])
+    .pipe(babel(config.js.babel))
+    .pipe(concat('scripts.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(paths.js.prev));
+});
+
+
+// JavaScript Production
+gulp.task('js-dist', () => {
+  return gulp.src([
+    `${paths.js.src}/libraries/**/*.js`,
+    `${paths.js.src}/functions/**/*.js`,
+    `${paths.js.src}/components/**/*.js`
+  ])
+    .pipe(babel(config.js.babel))
     .pipe(concat('scripts.js'))
     .pipe(uglify())
     .pipe(gulp.dest(paths.js.dist));
@@ -305,7 +232,7 @@ gulp.task('js-dist', ['clean-dist'], function() {
 
 
 // Handle Handlebars error
-var handlebarsError = function(error) {
+let handlebarsError = function(error) {
   console.log(
     '\n' + gutil.colors.underline(error.fileName) + '\n'
     + '  ' + gutil.colors.red('Handlebars error: ')
@@ -316,75 +243,141 @@ var handlebarsError = function(error) {
 
 
 // Handlebars Function
-var compileHandlebars = function(source, destination, nav) {
-  var pages      = [];
-  var components = [];
+let compileHandlebars = (task) => {
+  let pageDir      = `${paths.html.src}/pages/**/*.hbs`;
+  let componentDir = `${paths.html.src}/pages/components/**/*.hbs`;
 
-  if (nav) {
-    var pageList      = glob.sync(paths.html.pages      + '**/*.hbs');
-    var componentList = glob.sync(paths.html.components + '**/*.hbs');
+  // Create gulp.src and gulp.dest variables for the
+  // development and production task
+  let gulpSrc  = pageDir;
+  let gulpDest = paths.html.dev;
 
-    for (var page of pageList) {
-      var title = fm(fs.readFileSync(page, 'utf8')).attributes.title;
-      var href  = path.relative(paths.html.pages, page).replace('.hbs', '.html');
-
-      if (!title) {
-        title = '(No Title)';
-      }
-
-      pages.push({title, href});
-    }
-
-    for (var component of componentList) {
-      var title = fm(fs.readFileSync(component, 'utf8')).attributes.title;
-      var href  = 'components/' + path.relative(paths.html.components, component).replace('.hbs', '.html');
-
-      if (!title) {
-        title = '(No Title)';
-      }
-
-      components.push({title, href});
-    }
+  if (task === 'preview') {
+    gulpSrc  = [pageDir, `!${componentDir}`];
+    gulpDest = paths.html.prev;
   }
 
-  var hbStream = hb(config.html.hb)
-    .partials(paths.html.partials)
+  let dataMeta = {
+    version: require('./package.json').version,
+    lang: require('./package.json').lang,
+    dev: task === 'dev' ? true : false,
+  }
+
+
+  // Create dataPages object
+  let pageList = glob.sync(pageDir);
+  let dataPages = {
+    categories: {}
+  };
+
+  for (let page of pageList) {
+    let frontMatter = fm(fs.readFileSync(page, 'utf8')).attributes;
+    let url         = path.relative(`${paths.html.src}/pages`, page).replace('.hbs', '.html');
+    let name        = frontMatter.title ? frontMatter.title : url;
+    let category    = frontMatter.category ? frontMatter.category : 'Undefined';
+
+    let pageItem = {
+      name,
+      url
+    };
+
+    if (dataPages.categories.hasOwnProperty(category)) {
+      dataPages.categories[category].pages.push(pageItem);
+    } else {
+      dataPages.categories[category] = {
+        name: category,
+        icon: category[0],
+        pages: [pageItem]
+      };
+    };
+  }
+
+
+  // Create Handlebars Stream with partials, helpers and data
+  let hbStream = hb(config.html.hb)
+    .partials(`${paths.html.src}/partials/**/*.hbs`)
     .helpers(require('handlebars-layouts'))
     .helpers({
-      rel: function(options) {
-        var currentPath = path.dirname(options.data.file.path);
-        var sourcePath  = path.resolve(source);
+      // Handlebars concat helper
+      // Source: http://stackoverflow.com/a/34812062
+      concat: (json) => {
+        var concat = '';
+        var flipArray = [];
 
-        var additionalPath = '';
-
-        if (source === paths.html.components) {
-          additionalPath = '../'
+        for (let key in json.hash) {
+          flipArray.push(json.hash[key]);
         }
 
-        if (currentPath === sourcePath) {
-          return additionalPath;
+        for (let i = (flipArray.length - 1); i >= 0; i--) {
+          concat += flipArray[i];
         }
 
-        return additionalPath + path.relative(currentPath, sourcePath) + '/';
+        return concat;
+      },
+      page: (key, options) => {
+        let file = options.data.file.path;
+
+        let frontMatter = fm(fs.readFileSync(file, 'utf8')).attributes;
+
+        switch (key) {
+          case 'filebase':
+            return path.basename(file, '.hbs');
+            break;
+
+          case 'filename':
+            return path.basename(file, '.hbs') + '.html';
+            break;
+
+          case 'filepath':
+            return path.relative(`${paths.html.src}/pages`, file).replace('.hbs', '.html');
+            break;
+
+          case 'rel':
+            let currentPath = path.dirname(file);
+            let sourcePath  = path.resolve(`${paths.html.src}/pages`);
+
+            if (currentPath === sourcePath) {
+              return '';
+            }
+
+            return `${path.relative(currentPath, sourcePath)}/`;
+            break;
+
+          case 'title':
+            return frontMatter.title;
+            break;
+
+          case 'description':
+            return frontMatter.description;
+            break;
+
+          case 'category':
+            return frontMatter.category;
+            break;
+        }
+
+        if (frontMatter.hasOwnProperty(key)) {
+          return frontMatter[key];
+        }
       }
     })
     .data({
-      displayNav: nav,
-      navItems: {pages, components}
+      meta: dataMeta,
+      pages: dataPages
     });
 
-  return gulp.src(source + '**/*.hbs')
-    .pipe(gulpFm({property: 'meta'}))
+
+  return gulp.src(gulpSrc)
+    .pipe(gulpFm({property: 'fm'}))
     .pipe(hbStream.on('error', handlebarsError))
     .pipe(rename({extname: '.html'}))
-    .pipe(gulp.dest(destination));
+    .pipe(gulp.dest(gulpDest));
 };
 
 
 // HTML Development
-gulp.task('html-dev', ['clean-html-dev'], function() {
-  compileHandlebars(paths.html.pages, paths.html.dev, true);
-  compileHandlebars(paths.html.components, paths.html.dev + 'components', true);
+gulp.task('html-dev', ['clean-html-dev'], () => {
+  return compileHandlebars('dev');
 });
 
 
@@ -392,9 +385,9 @@ gulp.task('html-dev', ['clean-html-dev'], function() {
 gulp.task('html-watch', ['html-dev'], browsersync.reload);
 
 
-// HTML Production
-gulp.task('html-dist', ['clean-dist'], function() {
-  compileHandlebars(paths.html.pages, paths.html.dist, false);
+// HTML Preview
+gulp.task('html-prev', () => {
+  return compileHandlebars('preview');
 });
 
 
@@ -405,22 +398,126 @@ gulp.task('html-dist', ['clean-dist'], function() {
  * ========================================================================== */
 
 
-// Images Development
-gulp.task('img-dev', ['clean-img-dev'], function() {
-  return gulp.src(paths.img.src + '**')
+// Images Dev Copy
+gulp.task('img-dev-copy', ['clean-img-dev'], () => {
+  return gulp.src([
+    `${paths.img.src}/**`,
+    `!${paths.img.src}/icons`,
+    `!${paths.img.src}/icons/**`
+  ])
     .pipe(gulp.dest(paths.img.dev));
 });
+
+
+// Images Dev Icons
+gulp.task('img-dev-icons', ['clean-img-dev'], () => {
+  return gulp.src(`${paths.img.src}/icons/*.svg`)
+    .pipe(svgSprite(config.img.svgSpriteDev).on('error', (error) => { console.log(error); }))
+    .pipe(gulp.dest(paths.img.dev));
+});
+
+
+// Images Dev
+gulp.task('img-dev', ['img-dev-copy', 'img-dev-icons']);
 
 
 // Images Watch
 gulp.task('img-watch', ['img-dev'], browsersync.reload);
 
 
-// Images Distribution
-gulp.task('img-dist', ['clean-dist'], function() {
-  return gulp.src(paths.img.src + '**')
-    .pipe(imagemin(config.img.imagemin))
+// Images Preview Copy
+gulp.task('img-prev-copy', () => {
+  return gulp.src([
+    `${paths.img.src}/**`,
+    `!${paths.img.src}/icons`,
+    `!${paths.img.src}/icons/**`
+  ])
+    .pipe(imagemin([
+      imagemin.jpegtran(config.img.imagemin.jpg),
+      imagemin.optipng(config.img.imagemin.png),
+      imagemin.svgo(config.img.imagemin.svg)
+    ]))
+    .pipe(gulp.dest(paths.img.prev));
+});
+
+// Images Production Copy
+gulp.task('img-dist-copy', () => {
+  return gulp.src([
+    `${paths.img.src}/**`,
+    `!${paths.img.src}/icons`,
+    `!${paths.img.src}/icons/**`
+  ])
+    .pipe(imagemin([
+      imagemin.jpegtran(config.img.imagemin.jpg),
+      imagemin.optipng(config.img.imagemin.png),
+      imagemin.svgo(config.img.imagemin.svg)
+    ]))
     .pipe(gulp.dest(paths.img.dist));
+});
+
+
+// Images Preview Icons
+gulp.task('img-prev-icons', () => {
+  return gulp.src(`${paths.img.src}/icons/*.svg`)
+    .pipe(svgSprite(config.img.svgSpriteDist).on('error', (error) => { console.log(error); }))
+    .pipe(gulp.dest(paths.img.prev));
+});
+
+// Images Production Icons
+gulp.task('img-dist-icons', () => {
+  return gulp.src(`${paths.img.src}/icons/*.svg`)
+    .pipe(svgSprite(config.img.svgSpriteDist).on('error', (error) => { console.log(error); }))
+    .pipe(gulp.dest(paths.img.dist));
+});
+
+
+// Images Preview
+gulp.task('img-prev', ['img-prev-copy', 'img-prev-icons']);
+
+// Images Production
+gulp.task('img-dist', ['img-dist-copy', 'img-dist-icons']);
+
+
+
+
+/* NPM Assets
+ * Copy files from node modules.
+ * ========================================================================== */
+
+let copyNpmAssets = (taskDest) => {
+  let npmAssets = require(`./${paths.src}/npmassets.js`);
+
+  if (Array.isArray(npmAssets) && npmAssets.length > 0) {
+    for (let asset of npmAssets) {
+      gulp.src(asset.glob)
+        .pipe(gulp.dest(`${taskDest}/${asset.dest}`))
+        .pipe(browsersync.stream());
+    }
+  } else {
+    browsersync.reload();
+  }
+
+  delete require.cache[require.resolve(`./${paths.src}/npmassets.js`)];
+}
+
+// NPM Assets dev copy
+gulp.task('npmassets-dev', () => {
+  return copyNpmAssets(paths.dev);
+});
+
+
+// NPM Assets watch
+gulp.task('npmassets-watch', ['npmassets-dev']);
+
+
+// NPM Assets preview copy
+gulp.task('npmassets-prev', () => {
+  return copyNpmAssets(paths.prev);
+});
+
+// NPM Assets production copy
+gulp.task('npmassets-dist', () => {
+  return copyNpmAssets(paths.dist);
 });
 
 
@@ -431,7 +528,20 @@ gulp.task('img-dist', ['clean-dist'], function() {
  * ========================================================================== */
 
 
-gulp.task('development', ['css-dev', 'js-dev', 'html-dev', 'img-dev']);
+gulp.task('development', ['clean-dev'], () => {
+  runSequence(['css-dev', 'css-sg', 'js-dev', 'html-dev', 'img-dev', 'npmassets-dev']);
+});
+
+
+
+/* Preview
+ * Generate files for preview.
+ * ========================================================================== */
+
+
+gulp.task('preview', ['clean-prev'], () => {
+  runSequence(['css-prev', 'js-prev', 'html-prev', 'img-prev', 'npmassets-prev']);
+});
 
 
 
@@ -441,7 +551,9 @@ gulp.task('development', ['css-dev', 'js-dev', 'html-dev', 'img-dev']);
  * ========================================================================== */
 
 
-gulp.task('production', ['css-dist', 'js-dist', 'html-dist', 'img-dist']);
+gulp.task('production', ['clean-dist'], () => {
+  runSequence(['css-dist', 'js-dist', 'img-dist', 'npmassets-dist']);
+});
 
 
 
@@ -451,33 +563,41 @@ gulp.task('production', ['css-dist', 'js-dist', 'html-dist', 'img-dist']);
  * ========================================================================== */
 
 
-gulp.task('browsersync', function() {
+gulp.task('browsersync', () => {
+  // Setup Browsersync root directory
+  config.html.browsersync.server = paths.html.dev;
+
+  // Fire up Browsersync
   browsersync(config.html.browsersync);
 });
 
 
-gulp.task('default', ['clean-dev'], function() {
-  var onChangeMessage = function(event) {
+gulp.task('default', ['clean-dev'], () => {
+  let onChangeMessage = (event) => {
     console.log('\n');
-    gutil.log(gutil.colors.blue(event.path) + ' ' + event.type);
+    gutil.log(`${gutil.colors.blue(event.path)} ${event.type}`);
   }
 
   // Run initial task queue
-  runSequence(['css-dev', 'css-sg', 'js-dev', 'html-dev', 'img-dev'], 'browsersync');
+  runSequence(['css-dev', 'css-sg', 'js-dev', 'js-sg', 'html-dev', 'img-dev', 'npmassets-dev'], 'browsersync');
 
   // Watch CSS
-  var watchCSS = gulp.watch(paths.css.src + '**/*.scss', ['css-watch']);
+  let watchCSS = gulp.watch(`${paths.css.src}/**/*.scss`, ['css-watch']);
   watchCSS.on('change', onChangeMessage);
 
   // Watch JavaScript
-  var watchJS = gulp.watch(paths.js.src + '**/*.js', ['js-watch']);
+  let watchJS = gulp.watch(`${paths.js.src}/**/*.js`, ['js-watch']);
   watchJS.on('change', onChangeMessage);
 
   // Watch HTML
-  var watchHTML = gulp.watch(paths.html.src + '**/*.hbs', ['html-watch']);
+  let watchHTML = gulp.watch(`${paths.html.src}/**/*.hbs`, ['html-watch']);
   watchHTML.on('change', onChangeMessage);
 
   // Watch Images
-  var watchImg = gulp.watch(paths.img.src + '**/*', ['img-watch']);
+  let watchImg = gulp.watch(`${paths.img.src}/**/*`, ['img-watch']);
   watchImg.on('change', onChangeMessage);
+
+  // Watch NPM Assets
+  let watchNpmAssets = gulp.watch(`${paths.src}/npmassets.js`, ['npmassets-watch']);
+  watchNpmAssets.on('change', onChangeMessage);
 });

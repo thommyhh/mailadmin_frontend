@@ -1,23 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html{{#if meta.lang}} lang="{{meta.lang}}"{{/if}}>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{@file.meta.title}}</title>
+    {{#if (page "description")~}}<meta name="description" content="{{page 'description'}}">{{/if}}
+    {{#if (page "title")}}<title>{{page "title"}}</title>{{/if}}
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{{rel}}css/sg.css">
-    <link rel="stylesheet" href="{{rel}}css/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{page 'rel'}}css/sg.css?v={{meta.version}}">
+    <link rel="stylesheet" href="{{page 'rel'}}css/styles.css?v={{meta.version}}">
   </head>
   <body>
 
-    <!-- Styleguide Nav -->
     {{> "styleguide/nav"}}
 
     <header class="sg-header">
-      <h1 class="sg-header__title">{{@file.meta.title}}</h1>
-      <p class="sg-header__description">{{@file.meta.description}}</p>
+      {{#if (page "title")}}<h1 class="sg-header__title">{{page "title"}}</h1>{{/if}}
+      {{#if (page "description")}}<p class="sg-header__description">{{page "description"}}</p>{{/if}}
     </header>
 
     <main class="sg-body">
@@ -25,6 +24,8 @@
     </main>
 
     <!-- JS -->
-    <script src="{{rel}}js/scripts.js"></script>
+    <script src="{{page 'rel'}}js/sg.js?v={{meta.version}}"></script>
+    <script src="{{page 'rel'}}js/svgxuse.js?v={{meta.version}}"></script>
+    <script src="{{page 'rel'}}js/scripts.js?v={{meta.version}}"></script>
   </body>
 </html>

@@ -1,14 +1,15 @@
-/*!
- * Front-End Development Styleguide
- * by Fynn Becker
-============================================================================= */
+/* FRONT END STYLEGUIDE
+ * for style guide driven development
+ *
+ * Fynn Becker <info@fynn-becker.de>
+ * ========================================================================== */
 
 
 
-// MAIN SASS FILE
-//
-// Do not put style definitions in this file!
-// =============================================================================
+// Do not put style declarations in this main Sass file.
+// Only @import styles or definitions from other files.
+// =========================================================
+
 
 
 /*
@@ -30,37 +31,51 @@ Naming convention for CSS classes
 */
 
 
-// VARIABLES
-@import 'base/variables';
+
+// SETUP
+// =========================================================
+
+@import 'setup/normalize';
+@import 'setup/variables';
+
 
 
 // FUNCTIONS
+// =========================================================
+
 @import 'functions/svg-url';
 
 
 // MIXINS
+// =========================================================
+
 @import 'mixins/sr-only';
 
 
-// Base
-@import 'base/normalize';
+
+// BASE
+// =========================================================
+
+@import 'base/forms';
+@import 'base/buttons';
 @import 'base/scaffolding';
 @import 'base/typography';
 @import 'base/utilities';
 
 
+
 // LAYOUT
+// =========================================================
+
 @import 'layout/container';
 @import 'layout/grid';
 @import 'layout/login';
 
 
-// BASE COMPONENTS
-@import 'components/forms';
-@import 'components/buttons';
-
 
 // COMPONENTS
+// =========================================================
+
 @import 'components/action-bar';
 @import 'components/box';
 @import 'components/dropdown';
@@ -70,7 +85,3 @@ Naming convention for CSS classes
 @import 'components/nav-sidebar';
 @import 'components/notification';
 @import 'components/pagination';
-
-
-// SHAME
-@import 'base/shame';

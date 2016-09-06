@@ -1,203 +1,389 @@
-// STYLEGUIDE SASS FILE
-//
-// Some styles for development
-// =============================================================================
+/* STYLEGUIDE CSS
+ *
+ * Styles specific to the Styleguide navigation and
+ * components title and containers.
+ * ========================================================================== */
 
 
 
-
-// Variables
-// =====================================
-
+// VARIABLES
+// =========================================================
 
 // Breakpoints
-$screen-sm: 800px;
-$screen-lg: 1400px;
+$screen-sm:  50em; // 800px
+$screen-lg:  85em; // 1360px
 
-$padding:    30px;
+// Heights
+$height-nav: 2.5em; // 40px
+
+// Padding
+$padding:    2em;
 $padding-xs: ($padding / 3);
 $padding-sm: ($padding / 2);
 $padding-lg: ($padding * 2);
 $padding-xl: ($padding * 3);
 
 // Colors
-$color-primary:   rgb(0, 100, 200);
-$color-secondary: rgb(100, 100, 100);
-$color-text:      rgb(255, 255, 255);
-$color-border:    rgb(220, 220, 220);
+$color-blue:       rgb(0, 100, 200);
+$color-light-blue: lighten($color-blue, 20%);
+$color-gray:       rgb(100, 100, 100);
+$color-alto:       rgb(220, 220, 220);
+
+/* System UI Font Stack
+ * Source:
+ * https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/ */
+$font-stack: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+  "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
 
 
 
-
-// Docs Nav
-// =====================================
-
+/* STYLEGUIDE NAVIGATION
+ * ====================================================== */
 
 .sg-nav {
-  height: 40px;
-  transition: height 0.2s linear;
+  display: block;
+  box-sizing: border-box;
+  height: $height-nav; // 40px
+  margin: 0;
+  padding: 0;
 
+  font-family: $font-stack;
+  font-size: 1rem; // 16px
+
+  &::before,
   &::after {
-    content: '';
-    display: table;
-    line-height: 0;
-    clear: both;
+    display: none;
   }
-}
 
-.sg-nav--hidden {
-  height: 0;
-}
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
 
-  .sg-nav__list {
-    position: fixed;
-    z-index: 9999;
-    display: flex;
-    height: 40px;
-    top: 0;
-    left: 0;
-    right: 40px;
+  &.is-hidden {
+    height: 0;
+  }
+
+  code {
+    display: inline;
     margin: 0;
-    padding: 0;
-    background-color: $color-secondary;
-    transition: transform 0.2s linear;
+    padding: 0 0.2em;
 
-    .sg-nav--hidden & {
-      transform: translate3d(0, -40px, 0);
-    }
+    font-size: 1em;
+    font-family: monospace, monospace;
+    color: #fff;
 
-    @media (min-width: $screen-sm) {
-      padding: 0 15px;
-    }
+    background: $color-gray;
+  }
+}
+
+
+
+/* STYLEGUIDE NAV LIST
+ * ================================== */
+
+.sg-nav__list {
+  display: flex;
+  position: fixed;
+  z-index: 9999;
+  height: $height-nav; // 40px
+  top: 0;
+  right: $height-nav; // 40px
+  left: 0;
+  margin: 0;
+  padding: 0;
+
+  background-color: $color-gray;
+
+  will-change: transform;
+
+  &::before,
+  &::after {
+    display: none;
   }
 
-    .sg-nav__item {
-      display: block;
-      height: inherit;
-    }
+  .is-hidden & {
+    display: none;
+  }
+}
 
-      .sg-nav__button {
-        display: block;
-        height: 40px;
-        padding: 11px 20px;
-        font-size: 16px;
-        font-weight: 100;
-        text-transform: uppercase;
-        color: $color-text;
-        background: none;
-        border: none;
-        outline: none;
-        cursor: pointer;
 
-        .sg-nav__item:hover &,
-        &.sg-nav__button--active,
-        &:focus {
-          background: lighten($color-primary, 20%);
-        }
-      }
 
-        .sg-nav__icon {
-          height: 100%;
-          fill: currentColor;
-        }
+/* STYLEGUIDE NAV ITEM
+ * ================================== */
 
-        .sg-nav__text {
-          display: none;
+.sg-nav__item {
+  display: block !important;
+  height: $height-nav; // 40px
+  margin: 0;
+  padding: 0;
 
-          @media (min-width: $screen-sm) {
-            display: inline;
-            margin-left: 8px;
-            vertical-align: 3px;
-          }
-        }
+  &::before,
+  &::after {
+    display: none;
+  }
+}
 
-      .sg-nav__sub-list {
-        display: none;
-        position: absolute;
-        width: inherit;
-        top: 40px;
-        margin: 0;
-        padding: 0;
-        background-color: $color-border;
-      }
 
-      .sg-nav__sub-list--visible {
-        display: block;
-      }
 
-        .sg-nav__sub-item {
-          display: block;
-        }
+/* STYLEGUIDE NAV BUTTON
+ * ================================== */
 
-          .sg-nav__link {
-            display: block;
-            padding: 10px 20px;
-            font-size: 14px;
-            font-weight: 400;
-            color: $color-secondary;
-            text-decoration: none;
-            outline: none;
+.sg-nav__button {
+  display: block;
+  height: $height-nav;
+  margin: 0;
+  padding: 0 0.75em; // 0 12px
 
-            &:hover,
-            &:focus {
-              color: $color-text;
-              background: lighten($color-primary, 20%);
-            }
-          }
+  font-size: 1em; // 16px
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #fff;
 
-  .sg-nav__hide-btn {
-    position: fixed;
-    z-index: 9999;
-    height: 40px;
-    width: 40px;
-    top: 0;
-    right: 0;
-    padding: 5px;
-    font-size: 24px;
-    color: $color-text;
-    background: lighten($color-primary, 20%);
-    border: none;
-    outline: none;
-    cursor: pointer;
+  background: none;
 
-    &:hover,
-    &:focus {
-      background: lighten($color-primary, 10%);
-    }
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+
+  &.is-active,
+  &:hover,
+  &:focus,
+  &:active {
+    background: $color-light-blue;
   }
 
-    .sg-nav__hide-btn-icon {
-      fill: currentColor;
-      height: 28px;
-    }
+  &::before,
+  &::after {
+    display: none;
+  }
 
-    .sg-nav__hide-btn-icon--show {
-      display: none;
-
-      .sg-nav__hide-btn--active & {
-        display: inline;
-      }
-    }
-
-    .sg-nav__hide-btn-icon--close {
-      .sg-nav__hide-btn--active & {
-        display: none;
-      }
-    }
+  @media (min-width: $screen-sm) {
+    padding: 0 1.25em; // 0 20px
+  }
+}
 
 
 
+/* STYLEGUIDE NAV ICON
+ * ================================== */
+
+.sg-nav__icon {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 1.375em; // 22px
+  height: 1.375em; // 2px
+  margin: 0;
+  padding: 0;
+
+  font-size: 1em; // 16px
+  font-weight: 700;
+  color: $color-gray;
+
+  background-color: #fff;
+
+  border-radius: 50%;
+
+  &::before,
+  &::after {
+    display: none;
+  }
+}
 
 
-// Docs Header
-// =====================================
 
+/* STYLEGUIDE NAV TEXT
+ * ================================== */
+
+.sg-nav__text {
+  display: none;
+  margin: 0;
+  padding: 0;
+
+  &::before,
+  &::after {
+    display: none;
+  }
+
+  @media (min-width: $screen-sm) {
+    display: inline;
+    margin-left: 0.5em; // 8px
+
+    font-size: 1em; // 16px
+    letter-spacing: 0.01em; // 0.16px
+  }
+}
+
+
+
+/* STYLEGUIDE NAV SUBLIST
+ * ================================== */
+
+.sg-nav__sub-list {
+  display: none;
+  position: absolute;
+  width: inherit;
+  top: $height-nav; // 16px
+  margin: 0;
+  padding: 0;
+
+  background-color: $color-alto;
+
+  &::before,
+  &::after {
+    display: none;
+  }
+
+  &.is-active {
+    display: block;
+  }
+}
+
+
+
+/* STYLEGUIDE NAV SUBITEM
+ * ================================== */
+
+.sg-nav__sub-item {
+  display: block;
+  margin: 0;
+  padding: 0;
+
+  &::before,
+  &::after {
+    display: none;
+  }
+}
+
+
+
+/* STYLEGUIDE NAV LINK
+ * ================================== */
+
+.sg-nav__link {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0.7142857142857143em 0.8571428571428571em; // 10px 12px
+
+  font-size: 0.875em; // 14px
+  font-weight: 400;
+  color: $color-gray;
+  text-align: left;
+  text-decoration: none;
+
+  background: none;
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+
+  &:visited {
+    color: $color-gray;
+  }
+
+  &.is-active,
+  &:hover,
+  &:focus,
+  &:active {
+    color: #fff;
+    background: $color-light-blue;
+  }
+
+  &::before,
+  &::after {
+    display: none;
+  }
+
+  @media (min-width: $screen-sm) {
+    padding: 0.7142857142857143em 1.428571428571429em; // 10px 20px
+  }
+}
+
+
+
+/* STYLEGUIDE NAV HIDE BUTTON
+ * ================================== */
+
+.sg-nav__hide-btn {
+  display: block !important;
+  position: fixed;
+  z-index: 9999;
+  height: $height-nav; // 40px
+  width: $height-nav; // 40px
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+
+  font-size: 1em;
+  line-height: 1;
+  color: #fff;
+
+  background: $color-light-blue;
+
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+
+  will-change: transform;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: $color-blue;
+  }
+
+  &::before,
+  &::after {
+    display: none;
+  }
+}
+
+.sg-nav__hide-btn-icon {
+  fill: currentColor;
+  height: 1em; // 28px
+  font-size: 1.75em; // 28px
+}
+
+.sg-nav__hide-btn-icon--show {
+  display: none;
+
+  .is-active & {
+    display: inline;
+  }
+}
+
+.sg-nav__hide-btn-icon--close {
+  .is-active & {
+    display: none;
+  }
+}
+
+
+
+
+/* DOCS HEADER
+ * ====================================================== */
 
 .sg-header {
+  display: block;
+  box-sizing: border-box;
   max-width: $screen-lg;
   margin: $padding-sm auto $padding-lg;
   padding: $padding-sm;
-  border-bottom: 1px solid $color-border;
+
+  font-size: 1rem; // 16px
+
+  border-bottom: 1px solid $color-alto;
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
 
   @media (min-width: $screen-sm) {
     margin: $padding auto $padding-xl;
@@ -205,34 +391,51 @@ $color-border:    rgb(220, 220, 220);
   }
 }
 
-  .sg-header__title {
-    margin: 0 0 10px;
-    font-size: 26px;
-    font-weight: 100;
-    color: $color-primary;
 
-    @media (min-width: $screen-sm) {
-      margin: 0 0 15px;
-      font-size: 48px;
-    }
+
+/* STYLEGUIDE HEADER TITLE
+ * ================================== */
+
+.sg-header__title {
+  display: block;
+  margin: 0 0 0.5em;
+  padding: 0;
+
+  font-family: $font-stack;
+  font-size: 1.5em; // 24px
+  font-weight: 300;
+  color: $color-blue;
+
+  @media (min-width: $screen-sm) {
+    font-size: 3em; // 48px
   }
+}
 
-  .sg-header__description {
-    margin: 0;
-    font-size: 14px;
-    font-weight: 100;
-    color: $color-secondary;
 
-    @media (min-width: $screen-sm) {
-      font-size: 18px;
-    }
+
+/* STYLEGUIDE HEADER DESCRIPTION
+ * ================================== */
+
+.sg-header__description {
+  display: block;
+  margin: 0;
+  padding: 0;
+
+  font-family: $font-stack;
+  font-size: 0.875em; // 14px
+  font-weight: 400;
+  color: $color-gray;
+
+  @media (min-width: $screen-sm) {
+    font-size: 1.125em; // 18px
   }
+}
 
 
 
 
-// Docs Body
-// =====================================
+/* DOCS BODY
+ * ====================================================== */
 
 
 .sg-body {
@@ -243,73 +446,111 @@ $color-border:    rgb(220, 220, 220);
 
 
 
-// Docs Article
-// =====================================
+/* DOCS ARTICLE
+ * ====================================================== */
 
 
 .sg-article {
-  margin-bottom: $padding-lg;
+  margin: 0 0 $padding-lg;
 
   @media (min-width: $screen-sm) {
     margin-bottom: $padding-xl;
   }
 }
 
-  .sg-article__header {
-    padding: $padding-sm;
 
-    @media (min-width: $screen-sm) {
-      padding: $padding;
-    }
+
+/* STYLEGUIDE ARTICLE HEADER
+ * ================================== */
+
+.sg-article__header {
+  padding: $padding-sm;
+
+  @media (min-width: $screen-sm) {
+    padding: $padding;
+  }
+}
+
+
+
+/* STYLEGUIDE ARTICLE TITLE
+ * ================================== */
+
+.sg-article__title {
+  margin: 0 0 0.5em;
+  padding: 0;
+
+  font-family: $font-stack;
+  font-size: 1.25em; // 20px
+  font-weight: 300;
+  color: $color-blue;
+
+  @media (min-width: $screen-sm) {
+    font-size: 1.5em; // 24px
+  }
+}
+
+
+
+/* STYLEGUIDE ARTICLE DESCRIPTION
+ * ================================== */
+
+.sg-article__description {
+  margin: 0 0 0.625em;
+  padding: 0;
+
+  font-family: $font-stack;
+  font-size: 0.875em; // 14px
+  font-weight: 400;
+  color: $color-gray;
+
+  @media (min-width: $screen-sm) {
+    font-size: 1em;
+  }
+}
+
+
+
+/* STYLEGUIDE ARTICLE BODY
+ * ================================== */
+
+.sg-article__body {
+  margin: 0;
+  padding: $padding-sm;
+
+  outline: 1px solid $color-alto;
+
+  &::before,
+  &::after {
+    content: ' ';
+    display: table;
   }
 
-    .sg-article__title {
-      margin: 0 0 10px;
-      font-size: 20px;
-      font-weight: 100;
-      color: $color-primary;
-
-      @media (min-width: $screen-sm) {
-        font-size: 24px;
-      }
-    }
-
-    .sg-article__description {
-      margin: 0 0 10px;
-      font-size: 14px;
-      font-weight: 100;
-      color: $color-secondary;
-
-      @media (min-width: $screen-sm) {
-        font-size: 16px;
-      }
-    }
-
-  .sg-article__body {
-    padding: $padding-sm;
-    border-top:    1px solid $color-border;
-    border-bottom: 1px solid $color-border;
-
-    &::after {
-      content: ' ';
-      display: table;
-      clear: both;
-      line-height: 0;
-    }
-
-    @media (min-width: $screen-sm) {
-      padding: $padding;
-    }
-
-    @media (min-width: $screen-lg) {
-      border: 1px solid $color-border;
-    }
+  &::after {
+    clear: both;
   }
 
-  .sg-article__body--light {
-    background-color: #ddd;
+  @media (min-width: $screen-sm) {
+    padding: $padding;
   }
+}
 
-  .sg-article__body--dark {
-    background-color: #222;
-  }
+.sg-article__body--bg {
+  outline: none;
+}
+
+.sg-article__body--padding-none {
+  padding: 0;
+}
+
+
+
+/* STYLEGUIDE IFRAME
+ * ================================== */
+
+.sg-iframe {
+  display: block;
+  width: 100%;
+
+  border: none;
+}

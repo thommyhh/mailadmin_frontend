@@ -1,6 +1,8 @@
-# Front-End Styleguide
-Front-end development styleguide with Sass, JavaScript and Handlebars.
-Uses the [Gulp](http://gulpjs.com/) task runner to compile [Sass](http://sass-lang.com/) files, [lint](http://jshint.com/) and concatenate JavaScript and create static HTML from [Handlebars](http://handlebarsjs.com/).
+# Front End Development Styleguide
+
+Living Styleguide for componentized front end development.
+
+Uses the [Gulp](http://gulpjs.com/) task runner to compile [Sass](http://sass-lang.com/), [lint](http://eslint.org/) JavaScript, [transpile](https://babeljs.io/) ES6 Code and create static HTML from [Handlebars](http://handlebarsjs.com/).
 
 
 ## Contents
@@ -8,78 +10,77 @@ Uses the [Gulp](http://gulpjs.com/) task runner to compile [Sass](http://sass-la
 2. [Installation](#installation)
 3. [Usage](#usage)
   1. [Tasks](#tasks)
-  2. [Sass](#sass)
+  2. [CSS](#css)
   3. [JavaScript](#javascript)
-  4. [Handlebars](#handlebars)
-  5. [Holder.js](#holderjs)
-  6. [Images](#images)
-4. [Styleguide CSS](#styleguide-css)
-5. [Credits](#credits)
+  4. [HTML](#html)
+  5. [Images and Icons](#images-and-icons)
+  6. [NPM Assets](#npm-assets)
+4. [Credits](#credits)
 
 
 ## Dependencies
 * [Node.js with npm](https://nodejs.org/)
-* Windows: Use [Node.js 6](https://nodejs.org/en/download/current/) to avoid paths that exceed 260 characters.
+
+*Only tested with Node.js Current (v6.x).*
 
 
 ## Installation
-1. Get the [latest Front-End Styleguide release](https://github.com/MVSde/styleguide/releases/latest).
-2. Run `npm install` to download Node Modules.
-3. Install global Gulp with `npm install -g gulp`. This step is required to get CLI access to gulp.
+1. Get the [latest Styleguide release](https://github.com/mvsde/styleguide/releases/latest).
+2. Run `npm install` to download Node modules.
+3. Install global Gulp CLI with `npm install -g gulp-cli`. This step is required to get CLI access to gulp.
 
-
-*To update previously downloaded Node Modules run `npm update`.*
+*Check for outdated Node modules with `npm outdated`.*
+*Update Node modules with `npm update`.*
 
 
 ## Usage
 
 ### Tasks
 These are the main Gulp tasks:
-* Run `gulp` to start the default task. This task watches for file changes and starts Browsersync.  
-All generated files are placed in `dev`.
-* Run `gulp development` to start the default task without file watching and Browsersync.  
-All generated files are placed in `dev`.
-* Run `gulp production` to create prduction ready files. This task minifys CSS and JavaScript files and compresses images.  
-All genereated files will be placed in `dist`.
+* Run `gulp` to start the default task. Watches for file changes and starts Browsersync.
+* Run `gulp development` to start the default task without file watching and Browsersync.
+* Run `gulp preview` to create a prototype preview. Minifies CSS, JavaScript and images. Doesn't generate component HTML.
+* Run `gulp production` to create prduction ready files. Minifies CSS, JavaScript and images. Doesn't generate any HTML.
 
 There are more tasks available for standalone execution:
-* `sass-dev` and `sass-dist` for Sass compilation.
-* `js-dev` and `js-dist` for JavaScript concatenation and linting.
-* `html-dev` and `html-dist` for static HTML file generation.
-* `assets-dev` and `assets-dist` for assets copying and image minification.
+* `css-dev`, `css-prev` and `css-dist` for Sass compilation.
+* `js-dev`, `js-prev` and `js-dist` for JavaScript concatenation and linting.
+* `html-dev` and `html-prev` for static HTML file generation.
+* `img-dev`, `img-prev` and `img-dist` for image copying and icon sprite generation.
+* `npmassets-dev`, `npmassets-prev` and `npmassets-dist` for copying files from Node modules.
 
-*The generated folders `dev` and `dist` are not versioned by Git.*
+*The generated folders `dev`, `prev` and `dist` are excluded from Git.*
 
 
-### Sass
+### CSS
 Located in `src/css`.  
-Output to `dev/css` or `dist/css`.
+Output to `dev/css`, `prev/css` or `dist/css`.
 
-*Sass* is a CSS-Preprocessor supporting variables, nesting and mixins - among many other features. For a complete documentation jump to the [Sass Basics](http://sass-lang.com/guide).
+*Sass* is a CSS preprocessor supporting variables, nesting and mixins – among many other features. For a quick start jump to the [Sass Basics](http://sass-lang.com/guide).
 
-This styleguide splits the CSS into small parts. This ensures a far better organization of style declarations. Each component sits in it's own file and is re-usable across the project. See [Handlebars-Section](#handlebars) for the HTML-side of componentization.
+This styleguide splits the CSS into small parts. This ensures a better organization of style declarations. Each component sits in it's own file and is re-usable across the project. See [HTML](#html) for the HTML-side of componentization.
 
-The function `@import` includes the corresponding file in the main Sass file. The final output is one large CSS file to minimize requests. See `src/css/main.scss` for more information.
+The function `@import` includes Sass or CSS files in the main Sass file. The final output is one large CSS file to minimize browser requests. See `src/css/main.scss` for more information.
 
-*The development task generates sourcemaps.*
+*The development task generates sourcemaps. The preview and production tasks minify the CSS.*
 
 
 ### JavaScript
 Located in `src/js`.  
-Output to `dev/js` or `dist/js`.
+Output to `dev/js`, `prev/js` or `dist/js`.
 
-JavaScript files are concatenated in the following order: first files from `libraries`, then files from `functions` and lastly files from `components`. Within these folders the order is alphabetical.
+JavaScript files are concatenated in the following order: First files from `libraries`, then from `functions` and lastly from `components`. Within these folders the order is alphabetical. Subfolders are supported as well.
 
-Files from `functions` and `components` are compiled with [Babel](https://babeljs.io/) and the ES2015 preset. JSHint is configured for ES2015 aswell, see `.jshintrc` in the styleguide root for more options.
+Files from `functions` and `components` are transpiled with [Babel](https://babeljs.io/) and the ES2015 preset. ESLint is configured for ES2015 aswell, see `gulp/eslint.json` and [ESLint rules documentation](http://eslint.org/docs/rules/) for more options.
 
-All 3rd-party stuff should be placed inside the folder `src/js/libraries`. JSHint ignores files in this folder to prevent error spamming. jQuery is included with this styleguide but it can be replaced with other libraries or removed completely.
+All third-party stuff should be placed inside the folder `src/js/libraries`. Babel and ESLint ignore files in this folder to prevent errors.
 
-*The development task runs JSHint and generates sourcemaps. The production task uglifies the source.*
+*The development task runs ESLint and generates sourcemaps. The preview and production tasks uglify the source.*
 
 
-### Handlebars
+### HTML
 Located in `src/html`.  
-Output to `dev` or `dist`.
+Output to `dev` or `prev`.
 
 *Handlebars* is an HTML templating engine based on JavaScript. Gulp creates static HTML from Handlebars files.
 
@@ -87,11 +88,12 @@ Hierarchy with subfolders is supported. The output reflects the input file tree.
 
 
 #### Layouts
-Layouts determine the overall structure of the HTML document. They contain the `<head>` area, scripts and styles.
+Layouts determine the scaffolding of the HTML document. They contain the `<head>` area, the outer `<body>` tags, style and script references.
 
 Layouts are located in `src/html/partials/layouts`.
 
-```html
+A minimalistic layout may look like this:
+```handlebars
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -108,25 +110,28 @@ Layouts are located in `src/html/partials/layouts`.
 #### Includes
 These files can be included in all other files (even in other includes). The process is comparable to PHP's `include`.
 
-Includes are located in `src/html/partials/includes`. The Handlebars renderer accesses them relative to the `src/html/partials` folder.
+Includes are located in `src/html/partials/includes`.
 
 The syntax `{{> "includes/example" }}` includes the file `src/html/partials/includes/example.hbs`.
 
 
-#### Pages and Components
+#### Components and Pages
+Component pages are references for UI elements. The gulp task `preview` will not render them.
+
 Pages are prototypes for the final web pages.
-Components are reference pages for smaller UI parts. The gulp task `production` will not render them.
 
-The `default` gulp task injects a horizontal navigation bar into pages and components for fast file switching.
+The `default` gulp task injects a navigation bar into both component and page HTML files for fast site switching and additional settings.
 
-Pages are located in `src/html/pages`, components in `src/html/components`.
+Components are located in `src/html/pages/components`, pages in `src/html/pages`.
 
-The YAML front matter between the opening `---` and closing `---` contains general information like the page title and description. This will be used primarily by layouts. You can add additional information (arrays and even objects), which can be accessed via `{{@file.meta.key}}`. Replace `key` with the variable name from the front matter.
+The YAML front matter between the opening `---` and closing `---` contains general information like the title, description and category. These will be used primarily by layouts and the Styleguide navigation. The front matter can be accessed with `{{page "key"}}`. Replace `key` with the name from the front matter.
 
-```html
+A simple component page is defined by it's category and the correspondening layout:
+```handlebars
 ---
 title: Example
-description: Only used for components.
+description: More detailed than the title
+category: Components
 ---
 {{#extend "layouts/components"}}
 {{#content "body"}}
@@ -135,48 +140,78 @@ description: Only used for components.
 {{/extend}}
 ```
 
-Components may use additional markup with containers for variations.
-
-```html
-{{#embed "styleguide/article" title="Some title" description="Some text" body-class="dark"}}
+Components may use additional markup within the main body with nicely styled containers:
+```handlebars
+{{#embed "styleguide/article" title="Some title" description="Some description text." background="#555"}}
 {{#content "body"}}
-  <p>This creates a nicely formatted container with a title and description.</p>
+  <p>The component goes here and will be wrapped in a nicely formatted container.</p>
 {{/content}}
 {{/embed}}
 ```
 
-The following attributes are available:
-* `title` sets a heading for the component variation
-* `description` provides additional information
-* `body-class` generates a class prefixed with `sg-article__body--` which can be styled in `sg.scss` (the classes `light` and `dark` are pre-configured to alter the background-color of the component frame)
-
-### Holder.js
-Use [Holder.js](https://github.com/imsky/holder) to include image placeholders.
-
-This basic example generates a gray 300 by 200 pixel image.
-
-```html
-<img src="" data-src="holder.js/300x200" alt="Image Placeholder">
-```
-
-*[More advanced options](https://github.com/imsky/holder#placeholder-options) like color, text and font are available.*
+The following parameters are available:
+* [optional] `title` sets a heading for the component variation.
+* [optional] `description` provides additional information.
+* [optional] `background` injects `style="background: value"` into the component.
 
 
-### Images
-Located in `src/img`.  
-Output to `dev/img` or `dist/img`.
+#### Default Variables
 
-All files and folders placed in `src/img` will be copied to `dev/img` or `dist/img`.
+* `{{meta.version}}`: Current styleguide version (e.g. "1.7.0").
+* `{{meta.lang}}`: Global project language (e.g. "en").
+* `{{meta.dev}}`: Returns true for development task.
+* `{{page "title"}}`: Title of the current page.
+* `{{page "description"}}`: Description of the current page.
+* `{{page "category"}}`: Category of the current page.
+* `{{page "filebase"}}`: The name of the current page file without extension (e.g. "index").
+* `{{page "filename"}}`: The name of the current page file with extension (e.g. "index.html").
+* `{{page "filepath"}}`: Relative path containing the filename of the current page (e.g. "components/header.html").
+* `{{page "rel"}}`: Relative path to the root (e.g. "../").
 
-*The production task minifies images with a lossless compressor.*
 
-
-## Styleguide CSS
-The components pages and the development menu use some styling. All styles are located in `src/html/css/sg.scss`.
+#### Styleguide CSS
+The component HTML files and the development menu use some styling. All styles are located in `src/html/css/sg.scss`.
 
 *The style definitions located in `src/css` use the prefix `sg-` to ensure compatibility with the main stylesheet.*
 
 
+### Images and Icons
+Located in `src/img`.  
+Output to `dev/img`, `prev/img` or `dist/img`.
+
+All files and folders placed in `src/img` will be copied to `dev/img`, `prev/img` or `dist/img`.
+
+SVG files placed in the `src/img/icons` folder will be transformed into an SVG icon sprite named `icons.svg`. The original icons will *not* be copied to output folders.
+
+Icons can be used in HTML with the following syntax:
+```html
+<svg><use xlink:href="{{page 'rel'}}img/icons.svg#filename-icon"></use></svg>
+```
+
+This styleguide ships with [svgxuse](https://github.com/Keyamoon/svgxuse), a polyfill for browsers that do not support external SVG reference.
+
+*The preview and production tasks minify images with a lossless compressor.*
+
+
+### NPM Assets
+Files from Node modules can be incorporated into the styleguide. Simply install the module with `npm install --save-dev module-name` and add file or folder paths to `src/npmassets.js`.
+
+`npmassets.js` contains an array of objects. Each object has a `glob` and `dest` key:
+
+* `glob` will be passed to `gulp.src()` and specifies which files will be copied. Refer to the [gulp.src documentation](https://github.com/gulpjs/gulp/blob/master/docs/API.md#globs) for more information regarding globs.
+* `dest` sets the destination for the copy process. The development, preview and production tasks each prefix the destination with their specific output folders (e.g. `dev/js` for development). Base path variables from `gulp/paths.js` can be used (`path.css.base`, `path.js.base`, `path.html.base` and `path.img.base`).
+
+The following example is the default example:
+```javascript
+module.exports = [
+  {
+    glob: 'node_modules/svgxuse/svgxuse.{js,min.js}',
+    dest: paths.js.base
+  }
+];
+```
+
+
 ## Credits
 
-[Material icons by Google](https://design.google.com/icons/)
+* [Material icons by Google](https://design.google.com/icons/)
