@@ -72,12 +72,6 @@ gulp.task('clean-dist', () => {
 });
 
 
-// Clean Dev HTML
-gulp.task('clean-html-dev', () => {
-  return del([`${paths.html.dev}/**/*.html`, `!${paths.html.dev}/img/icons.html`]);
-});
-
-
 // Clean Dev Images
 gulp.task('clean-img-dev', () => {
   return del(`${paths.img.dev}/**`);
@@ -326,11 +320,11 @@ let compileHandlebars = (task) => {
             break;
 
           case 'filename':
-            return path.basename(file, '.hbs') + '.html';
+            return `${path.basename(file, '.hbs')}.html`.replace('index.html', '');
             break;
 
           case 'filepath':
-            return path.relative(`${paths.html.src}/pages`, file).replace('.hbs', '.html');
+            return path.relative(`${paths.html.src}/pages`, file).replace('.hbs', '.html').replace('index.html', '');
             break;
 
           case 'rel':
@@ -377,7 +371,7 @@ let compileHandlebars = (task) => {
 
 
 // HTML Development
-gulp.task('html-dev', ['clean-html-dev'], () => {
+gulp.task('html-dev', () => {
   return compileHandlebars('dev');
 });
 
